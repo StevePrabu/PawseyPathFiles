@@ -1,0 +1,120 @@
+#!/usr/bin/python
+from __future__ import division
+from astropy.io import fits
+from astropy.wcs import WCS
+from argparse import ArgumentParser
+import ephem
+from datetime import datetime, timedelta
+import csv
+import time
+import numpy as np
+
+mwa = ephem.Observer()
+mwa.lon = '116:40:14.93485'
+mwa.lat = '-26:42:11.94986'
+mwa.elevation = 377.827 #from sea level
+
+obsList = [1165782976,1165782856,1165782736,1165782616,1165782496,1165782376,1165782256,1165782136,1165782016,1165781896,1165781776,1165781656,1165781536,1165781416,1165781296,1165781176,1165781056,1165780936,1165780816,1165780696,1165780576,
+1165780456,1165780336,1165780216,1165780096,1165779976,1165779856,1165779736,1165779616,1165779496,1165779376,1165779256,1165779016,1165778896,1165778776,1165778656,1165778536,1165778416,1165778296,1165778176,1165778056,1165777936,1165777816,
+1165777696,1165777576,1165777456,1165777336,1165777216,1165777096,1165776976,1165776856,1165776736,1165776616,1165776496,1165776376,1165776256,1165776136,1165776016,1165775896,1165775776,1165775656,1165775536,1165775416,1165775296,1165775176,
+1165775056,1165774936,1165774816,1165774696,1165774576,1165774456,1165774216,1165774096,1165773976,1165773856,1165773736,1165773616,1165773496,1165773376,1165773256,1165773136,1165773016,1165772896,1165772776,1165772656,1165772536,1165772416,
+1165772296,1165772176,1165772056,1165771936,1165771696,1165771576,1165771456,1165771336,1165771216,1165771096,1165770976,1165770856,1165770736,1165770616,1165770496,1165770376,1165770256,1165770136,1165770016,1165769896,1165769776,1165769656,
+1165769536,1165769416,1165769296,1165769176,1165769056,1165768936,1165768816,1165768696,1165768576,1165768456,1165768336,1165768216,1165768096,1165767976,1165767856,1165767736,1165767616,1165767496,1165767376,1165767256,1165767136,1165767016,
+1165766896,1165766776,1165766656,1165766536,1165766416,1165766296,1165766176,1165766056,1165765936,1165765816,1165765696,1165765576,1165765456,1165765336,1165765216,1165765096,1165764976,1165764856,1165764736,1165764616,1165764376,1165764256,
+1165764136,1165764016,1165763896,1165763776,1165763656,1165763536,1165763416,1165763296,1165763176,1165763056,1165762936,1165762816,1165762696,1165762576,1165762456,1165762336,1165762216,1165762096,1165761976,1165761856,1165761736,1165761616,
+1165766536,1165761376,1165761256,1165761136,1165761016,1165760896,1165760776,1165760656,1165760536,1165760416,1165760296,1165760176,1165760056,1165759936,1165759816,1165759696,1165759576,1165759456,1165759336,1165759216,1165759096,1165758976,
+1165758856,1165758736,1165758616,1165758496,1165758376,1165758256,1165758136,1165758016,1165757896,1165757776,1165757656,1165757536,1165757416,1165757296,1165757056,1165756936,1165756816,1165756696,1165756576,1165756456,1165756336,1165756216,
+1165756096,1165755976,1165755856,1165755736,1165755616,1165755496,1165755376,1165755256,1165755136,1165755016,1165754896,1165754776,1165754656,1165754536,1165754416,1165754296,1165754176,1165754056,1165753936,1165753816,1165753696,1165753576,
+1165753456,1165753336,1165753216,1165753096,1165752976,1165752856,1165752736,1165752616,1165752496,1165752376,1165752256,1165752136,1165752016,1165751896,1165751776,1165751656,1165751536,1165751416,1165751296,1165751176,1165751056,1165750936,
+1165750816,1165750696,1165750576,1165750456,1165750336,1165750216,1165750096,1165749976]
+
+
+def rcs(satid):
+    output = []
+    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/HexFMSurveySolution/RCS.txt")
+    rline = w.readline()
+    while rline:
+        local_ID =int( rline[13] + rline[14] + rline[15] + rline[16] + rline[17])
+        if satid == local_ID:
+            local_rcs = str(rline[119] + rline[120] + rline[121] + rline[122] + rline[123] + rline[124] + rline[125] + rline[126])
+	    output = local_rcs.replace(" ", "")
+            break
+        rline = w.readline()
+    return output
+
+def main():
+    #parser = ArgumentParser("sat reaq", description="finds the number of times the satelites goes thro the beam in the 8 hours of observation")
+    #parser.add_argument("--obs",required=True,help="The observation id")
+    #args = parser.parse_args()
+    
+    with open("SatelliteReacquisitionFull.csv", "w") as vsc:
+        thewriter = csv.writer(vsc)
+        thewriter.writerow(["noradid", "RCS", "shortest Range", "obs id", "radius","not detected"])
+        obs_counter = 1
+        for obs in obsList:
+            print("working on obs " + str(obs_counter) + "/" + str(len(obsList)))
+            obs_counter += 1
+            ## iterate through the fits files
+            satlist = []
+            for i in range(56):
+                print("working on timstep " + str(i))
+                try:
+                    hdu = fits.open(str(obs) + "/6Sigma3floodfillSigmaRFIBinaryMap-t" +str(i).zfill(4) +  ".fits")
+                except:
+                    continue
+	        wcs = WCS(hdu[0].header,naxis=2) 
+                UTCTime = datetime.strptime(hdu[0].header['DATE-OBS'][:-2], '%Y-%m-%dT%H:%M:%S') 
+                mwa.date = UTCTime
+                f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/HexFMSurveySolution/FULLTLE.txt")
+                line = f.readline()
+                counter = 1
+                line1 = "starlink"
+                #line2 = ""
+                #line3 = ""
+                while line:
+                    if counter%2 == 1:
+                        line2 = line
+                    else:
+                        line3 = line
+                        satID = int(line2[2] + line2[3] + line2[4] + line2[5] + line2[6] )
+		        sat = ephem.readtle(line1,line2,line3)
+                        sat.compute(mwa)
+                        x, y = wcs.all_world2pix([[np.degrees(sat.ra.real), np.degrees(sat.dec.real)]], 1)[0]
+                        radius = np.sqrt((x-700)**2.0+(y-700)**2.0)
+                        #print("range is " + str(sat.range))
+                        if radius <= 250 and sat.range < 2000000 and satID not in satlist :
+                            print("found sat " + str(satID))
+		            RCS = rcs(satID)
+                            print(RCS)
+                            satlist.append(satID)
+                            if str(RCS) != "N/A":
+                                delat_time_array = np.arange(0,2*(56.0-i),2)
+                                previousRange = sat.range
+                                radius_array = []                                
+                                for deltaT in delat_time_array:
+                                    mwa.date = UTCTime + timedelta(seconds=deltaT)
+                                    sat.compute(mwa)
+                                    x, y = wcs.all_world2pix([[np.degrees(sat.ra.real), np.degrees(sat.dec.real)]], 1)[0]
+                                    radius = np.sqrt((x-700)**2.0+(y-700)**2.0)
+                                    radius_array.append(radius)
+                                    currentRange = sat.range
+
+                                    if currentRange > previousRange and radius < 250:
+                                        minrange = int(previousRange/1000)
+                                        print("minimum range found and the value is " + str(minrange) + "km")
+                                        satlist.append(satID)
+                                        csvline = [satID, RCS, minrange, obs,min(radius_array)*0.0833333, "not detected"]
+                                        thewriter.writerow(csvline)
+                                        break
+                                    else:
+                                        previousRange = sat.range
+                                        #print("searching for min range....")
+                            else:
+                                print("RCS to small")       
+                                #satlist.append(satID) 
+                    counter +=1                           
+                    line = f.readline()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,102 @@
+#!/usr/bin/python
+from argparse import ArgumentParser
+from astropy.io import fits
+import numpy as np
+from astropy.wcs import WCS
+from astropy.nddata import Cutout2D
+import ephem
+import time
+from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+
+#The below sets MWA as the observer
+mwa = ephem.Observer()
+mwa.lon = '116:40:14.93485'
+mwa.lat = '-26:42:11.94986'
+mwa.elevation = 377.827 #from sea level
+
+
+def findTLE(noradid):
+    files = ["LEOTLE.txt", "MEOTLE.txt", "HEOTLE.txt"]
+    satline2 = ""
+    satline3 = "" 
+    for filecounter in files:
+        if satline2 != "" and satline3 != "":
+            break
+        f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/HexFMSurveySolution/" + str(filecounter))
+        line = f.readline()
+        counter = 1
+        while line:
+            if counter%2 ==1:
+                line2 = line
+            else:
+                line3 = line
+                satID = int(line2[2] + line2[3] + line2[4] + line2[5] + line2[6] )
+                if satID == noradid:
+                    print("satellite found")
+                    satline2 = line2
+                    satline3 = line3
+                    break
+            counter += 1
+            line  = f.readline()
+    return satline2,satline3
+
+
+def main():
+    parser = ArgumentParser("maxFinder",description="Finds the freq and time-step where the maximum happens")
+    parser.add_argument("--t1",required=True, type=int,help="The timeStep to start the search")
+    parser.add_argument("--t2",required=True,type=int,help = "The timeStep to finish the search")
+    parser.add_argument("--f1",required=True,type=int,help="The frequency to start search for satellite")
+    parser.add_argument("--f2",required=True,type=int,help="The frequency to end search for satellites ")
+    parser.add_argument("--value",required=True,type=float,help="The maximum value searched by for...")
+    parser.add_argument("--obs",required=True,type=int,help="The observation ID")
+    parser.add_argument("--noradid",required=True,type=int,help="The norad id of the satellite")
+    args = parser.parse_args()
+    timeArray = range(args.t1,args.t2+1)
+    freqArray = range(args.f1, args.f2+1)
+    
+    line1 = "sat"
+    line2,line3 = findTLE(args.noradid)
+    sat = ephem.readtle(line1,line2,line3)
+    foundValue = False
+    signal = []
+
+    for t in timeArray:
+        if foundValue == True:
+            break
+        for f in freqArray:
+            #print("searching on t " + str(t) + " f " + str(f))
+	    hdu1 = fits.open(str(args.obs)+'-2m-' + str(t) + '-' + str(f).zfill(4)+ '-dirty.fits')
+            hdu2 = fits.open(str(args.obs)+'-2m-' + str(t+1) + '-' + str(f).zfill(4)+ '-dirty.fits')
+            diff = hdu2[0].data[0,0,:,:] - hdu1[0].data[0,0,:,:]
+	    UTCTime = datetime.strptime(hdu2[0].header['DATE-OBS'], '%Y-%m-%dT%H:%M:%S.%f')
+            wcs = WCS(hdu2[0].header,naxis=2)
+            mwa.date = UTCTime
+            sat.compute(mwa)
+            xy = wcs.all_world2pix([[np.degrees(sat.ra.real), np.degrees(sat.dec.real)]], 1)[0]
+            x = int(np.floor(xy[0]))
+            y = int(np.floor(xy[1]))
+            cutoutData = Cutout2D(diff, (x,y), (100,100))
+	    print("searching on t " + str(t) + " f " + str(f) + "max = " + str(int(np.max(cutoutData.data))) ) 
+            signal_temp = [int(np.max(cutoutData.data)),f,t]
+            signal.append(signal_temp)
+            #if np.abs(np.max(cutoutData.data) - args.value) <= 0.1 :
+            #    print("value location found")
+            #    print("hdu1")
+            #    print(str(args.obs)+'-2m-' + str(t) + '-' + str(f).zfill(4)+ '-dirty.fits')
+            #    print("hdu2")
+            #    print(str(args.obs)+'-2m-' + str(t+1) + '-' + str(f).zfill(4)+ '-dirty.fits')
+            #    foundValue = True
+            #    plt.show(cutoutData.data)
+            #    plt.colorbar()
+            #    plt.show()
+    signal = np.asarray(signal)
+    i = np.where(signal[:,0] == np.max(signal[:,0]))
+    print("The peak value is " + str(max(signal[:,0]))+ " at time " + str(signal[i,2]) + " and at f " + str(signal[i,1]))
+
+
+            
+
+
+if __name__ == "__main__":
+    main() 
