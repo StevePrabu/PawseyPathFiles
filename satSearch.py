@@ -120,7 +120,7 @@ def getSatXY(line1, line2, line3, UT, mwa, ts):
 
     if 0 < px < imgSize and 0 < py < imgSize:
 
-        if np.sqrt((px - (imgSize/2))**2 + (py -(imgSize/2))**2) < imgSize/2.5:
+        if np.sqrt((px - (imgSize/2))**2 + (py -(imgSize/2))**2) < imgSize/3:
             LOS_range = distance.m
 
             if LOS_range < 2000000:
@@ -185,7 +185,7 @@ def filterDetections(detectionSummary):
 
 
 
-    ## remove objects will less than three occurances and has no consec detections
+    ## remove objects will less than 4 occurances and has no consec detections
     filteredSummary = dict()
     for obj in detectionSummary:
 
@@ -193,7 +193,7 @@ def filterDetections(detectionSummary):
         total = detectionSummary[obj]["total"]
         timeSteps = detectionSummary[obj]["timeSteps"]
 
-        if float(total) >= 3:
+        if float(total) > 4:
 
             timeStep_array = timeSteps.split("-")
 
