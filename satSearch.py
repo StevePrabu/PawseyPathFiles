@@ -42,8 +42,8 @@ def getTLE(t):
     entries : number of objects in catalog
     """
 
-    time1 = startUTC
-    time2 = time1 + timedelta(hours=24*4) ## obtain tle for objects updated within two weeks
+    time1 = startUTC + timedelta(hours=-24)
+    time2 = time1 + timedelta(hours=24) ## obtain tle for objects updated within two weeks
     day1, month1, year1 = str(time1.day).zfill(2), str(time1.month).zfill(2), str(time1.year)
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
     custom_name = year1 + "-" + month1 + "-" + day1 + "__" +  year2 + "-" + month2 + "-" + day2
@@ -126,7 +126,7 @@ def getSatXY(line1, line2, line3, UT, mwa, ts):
             if LOS_range < 2000000:
                 visible = True
 
-            radius = np.degrees(50000/LOS_range) # 25 km offset cone in orbit (can be made smaller) s=rxtheta
+            radius = np.degrees(70000/LOS_range) # 25 km offset cone in orbit (can be made smaller) s=rxtheta
             number_of_pixels = radius/pixel_scale 
 
     return px, py, number_of_pixels, visible
@@ -240,6 +240,10 @@ def filterDetections(detectionSummary):
 
     return filteredSummary, set(imaging_timeSteps)
 
+# def updateTLE_2_obtain_latest(catalog, noObjects):
+#     """
+#     goes throug the catalog and outputs only the latest events
+#     """
 
 
 def main(obs, t1, t2):
@@ -257,7 +261,7 @@ def main(obs, t1, t2):
 
     # begin search
     ts = load.timescale()
-    mwa = Topos("26.701276778 S", "116.670846137 E", elevation_m= 377.827)
+    mwa = Topos("26.703319405555554 S", "116.91558083333334 E", elevation_m= 377.827)
     globalData = np.zeros((imgSize, imgSize))
 
     ## the below was used for plotting...can be removed
@@ -273,8 +277,8 @@ def main(obs, t1, t2):
 
         ## get and time dati for the timestep 
         try:
-            hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
-            hduSeed = fits.open("6Sigma1FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
+            hdu = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
+            hduSeed = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
             dataSeed = hduSeed[0].data
         except:
             eprint("input file for timeStep " + str(t) + " not found.\nSkipping timestep.")
@@ -309,6 +313,23 @@ def main(obs, t1, t2):
                 continue
 
             else:
+
+                ######## find the most recent entry ################
+                # value_array = []
+                # for satNo2 in range(noObjects):
+                #     line2 = catalog[satNo2]["TLE_LINE1"]
+                #     norad_temp = line2[2:7]
+                #     if float(norad_temp) == float(norad):
+                #         epoch = datetime.strptime(catalog[satNo2]["PUBLISH_EPOCH"],'%Y-%m-%d %H:%M:%S' )
+                #         diff = abs((epoch-startUTC).total_seconds())
+                #         value_array.append([diff, satNo2])
+                        
+                # value_array = np.array(value_array)
+                # recent_arg = int(np.where(value_array[:,0] == min(value_array[:,0]) )[0])
+                # line2 = catalog[recent_arg]["TLE_LINE1"]
+                # line3 = catalog[recent_arg]["TLE_LINE2"]
+
+                #####################################################
 
                 sats_searched.append(norad)
                 #line2 = catalog[satNo]["TLE_LINE1"]
@@ -397,7 +418,7 @@ if __name__ == "__main__":
     query = st.SpaceTrackClient(args.user, args.passwd)
 
     ## get header info and make them global
-    hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
+    hdu = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
     
     global wcs, imgSize, startUTC, pixel_scale
     wcs = WCS(hdu[0].header, naxis=2)

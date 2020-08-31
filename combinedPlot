@@ -34,7 +34,7 @@ LeoData = np.zeros((1400,1400))
 #UTCtime = datetime.time
 for i in range(148):
     try:
-        hdu = fits.open("6Sigma3floodfillSigmaRFIBinaryMap-t" +str(i).zfill(4) +  ".fits")
+        hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" +str(i).zfill(4) +  ".fits")
     except:
         continue
     globalData += hdu[0].data
@@ -54,7 +54,7 @@ for i in range(148):
     except:
         continue
     sat_id_array = []
-    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/FULLTLE.txt")
+    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/FULLTLE.txt")
     line = f.readline()
     counter = 1
     line1 = "starlink"
@@ -77,7 +77,7 @@ for i in range(148):
 		local_RCS = "000"
 		if  radius <= 250:
                     print("True")
-                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/RCS.txt")
+                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/RCS.txt")
                     rline = w.readline()
                     local_RCS = 0
                 
@@ -272,7 +272,7 @@ LeoData = np.zeros((1400,1400))
 for i in range(148):
     break
     try:
-        hdu = fits.open("6Sigma3floodfillSigmaRFIBinaryMap-t" +str(i).zfill(4) +  ".fits")
+        hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" +str(i).zfill(4) +  ".fits")
     except:
         continue
     globalData += hdu[0].data
@@ -292,7 +292,7 @@ for i in range(148):
     except:
         continue
     sat_id_array = []
-    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/LEOTLE.txt")
+    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/LEOTLE.txt")
     line = f.readline()
     counter = 1
     line1 = "starlink"
@@ -314,7 +314,7 @@ for i in range(148):
                 #    plt.text(y,x, str(satID) + "-r" + str(sat.range) )
 		if sat.range < 1000000 and radius <= 250:
                     print("True")
-                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/RCS.txt")
+                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/RCS.txt")
                     rline = w.readline()
                     local_RCS = 0
                 
@@ -351,7 +351,7 @@ for i in range(148):
         line = f.readline()
 
     sat_id_array = []
-    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/MEOTLE.txt")
+    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/MEOTLE.txt")
     line = f.readline()
     counter = 1
     line1 = "starlink"
@@ -371,7 +371,7 @@ for i in range(148):
                 #if (5 <= x <= (1400-5)) and (5<= y < (1400-5)):
                 #    plt.text(y,x, str(satID) + "-r" + str(sat.range) )
 		if sat.range < 1000000 and radius <= 250:
-                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/RCS.txt")
+                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/RCS.txt")
                     rline = w.readline()
                     local_RCS = 0
 
@@ -406,7 +406,7 @@ for i in range(148):
         counter +=1
         line = f.readline()
     sat_id_array = []
-    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/HEOTLE.txt")
+    f = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/HEOTLE.txt")
     line = f.readline()
     counter = 1
     line1 = "starlink"
@@ -427,7 +427,7 @@ for i in range(148):
                 #if (5 <= x <= (1400-5)) and (5<= y < (1400-5)):
                 #    plt.text(y,x, str(satID) + "-r" + str(sat.range) )
 		if sat.range < 1000000 and radius <= 250:
-                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/conjunction/RCS.txt")
+                    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/starlinkSet3/RCS.txt")
                     rline = w.readline()
                     local_RCS = 0
 
