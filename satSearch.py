@@ -42,7 +42,7 @@ def getTLE(t):
     entries : number of objects in catalog
     """
 
-    time1 = startUTC + timedelta(hours=-24)
+    time1 = startUTC + timedelta(hours=-24*2)
     time2 = time1 + timedelta(hours=24) ## obtain tle for objects updated within two weeks
     day1, month1, year1 = str(time1.day).zfill(2), str(time1.month).zfill(2), str(time1.year)
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
