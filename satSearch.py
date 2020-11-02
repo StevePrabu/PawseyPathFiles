@@ -69,6 +69,7 @@ def getTLE(t):
 
         if debug:
             eprint("tle file found on disk. Not downloading.")
+            eprint("using file "+ "../../catalogs/TLE_catalog" + custom_name + ".txt")
 
         with open("../../catalogs/TLE_catalog" + custom_name + ".txt") as json_file:
             result = json.load(json_file)
@@ -277,8 +278,8 @@ def main(obs, t1, t2):
 
         ## get and time dati for the timestep 
         try:
-            hdu = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
-            hduSeed = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
+            hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
+            hduSeed = fits.open("6Sigma1FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
             dataSeed = hduSeed[0].data
         except:
             eprint("input file for timeStep " + str(t) + " not found.\nSkipping timestep.")
@@ -418,7 +419,7 @@ if __name__ == "__main__":
     query = st.SpaceTrackClient(args.user, args.passwd)
 
     ## get header info and make them global
-    hdu = fits.open("6Sigma1Floodfilllr14SigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
+    hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
     
     global wcs, imgSize, startUTC, pixel_scale
     wcs = WCS(hdu[0].header, naxis=2)
