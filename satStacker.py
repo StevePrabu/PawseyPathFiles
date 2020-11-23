@@ -177,7 +177,11 @@ def getCube(f,args):
             print("reading t {}".format(t))
         hdu1 = fits.open(str(args.obs) + "-"+str(args.midName)+"-"+str(t)+"-"+str(f).zfill(4)+"-dirty.fits")
         hdu2 = fits.open(str(args.obs) + "-"+str(args.midName)+"-"+str(t+1)+"-"+str(f).zfill(4)+"-dirty.fits")
-        diff = hdu2[0].data[0,0,:,:] - hdu1[0].data[0,0,:,:]
+        ## create file full of zeros if any equal to zero
+        if np.all(hdu2[0].data[0,0,:,:] == 0) or np.all(hdu1[0].data[0,0,:,:] ==0 ):
+            diff = np.zeros((imgSize, imgSize))
+        else:
+            diff = hdu2[0].data[0,0,:,:] - hdu1[0].data[0,0,:,:]
         utc = datetime.strptime(hdu2[0].header['DATE-OBS'], '%Y-%m-%dT%H:%M:%S.%f')
         hdu1.close()
         hdu2.close()

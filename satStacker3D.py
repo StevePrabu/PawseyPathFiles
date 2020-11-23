@@ -129,7 +129,7 @@ def getCube(f):
         data2 = hdu2[0].data[0,0,:,:]
 
         ## check if any of the files are full of zeros
-        if np.any(data1==0) or np.any(data2==0):
+        if np.all(data1==0) or np.all(data2==0):
             diff = np.zeros((1400,1400))
         
         else:
@@ -162,7 +162,7 @@ def getXY(sat, local_time):
     return pix_coords.T
 
 
-def worker(intrack_phase, offtrack_phase):
+def worker_old(intrack_phase, offtrack_phase):
 
     signal = []
         
@@ -197,6 +197,103 @@ def worker(intrack_phase, offtrack_phase):
         return np.mean(signal)
 
 
+def worker(intrack_phase, offtrack_phase):
+    
+    signal = []
+    local_line3 = updateTLE(line3,raOffset=offtrack_phase)
+    sat = EarthSatellite(line2, local_line3, line1, ts)
+    time_counter = 0
+    
+    for utc in utc_array:
+
+        if np.all(cube[time_counter,:,:] ==0):
+            time_counter += 1
+            continue
+        start_utc = utc + timedelta(seconds=(intrack_phase))
+        end_utc = start_utc + timedelta(seconds=2)
+
+        utc_ts_start = ts.utc(start_utc.year, start_utc.month, start_utc.day, start_utc.hour, start_utc.minute, start_utc.second + start_utc.microsecond/1000.0)
+        utc_ts_end = ts.utc(end_utc.year, end_utc.month, end_utc.day, end_utc.hour, end_utc.minute, end_utc.second + end_utc.microsecond/1000.0)
+
+        xo, yo = getXY(sat, utc_ts_start)
+        x1, y1 = getXY(sat, utc_ts_end)
+
+        if np.isnan(xo) or np.isnan(yo) or np.isnan(x1) or np.isnan(y1):
+            continue
+        disto = np.sqrt((xo-imgSize/2)**2 + (yo-imgSize/2)**2)*imgScale 
+        dist1 = np.sqrt((x1-imgSize/2)**2 + (y1-imgSize/2)**2)*imgScale
+
+        if disto > 18 or dist1 > 18:
+            continue
+
+        x_array, y_array = getBetweenPoints_type1(float(xo),float(yo),float(x1),float(y1))
+        for x, y in zip(x_array, y_array):
+            signal.append(cube[time_counter,int(y),int(x)])
+
+        time_counter += 1
+
+    if np.all(signal == 0) or signal == []:
+        return 0
+    else:
+        return np.mean(signal)
+
+        
+
+
+
+def getBetweenPoints_type1(x0,y0,x1,y1):
+    x=[]
+    y=[]
+    dx = x1-x0
+    dy = y1-y0
+    steep = abs(dx) < abs(dy)
+
+    if steep:
+        x0,y0 = y0,x0
+        x1,y1 = y1,x1
+        dy,dx = dx,dy
+
+    if x0 > x1:
+        x0,x1 = x1,x0
+        y0,y1 = y1,y0
+
+    gradient = float(dy) / float(dx)  # slope
+
+    """ handle first endpoint """
+    xend = round(x0)
+    yend = y0 + gradient * (xend - x0)
+    xpxl0 = int(xend)
+    ypxl0 = int(yend)
+    x.append(xpxl0)
+    y.append(ypxl0) 
+    x.append(xpxl0)
+    y.append(ypxl0+1)
+    intery = yend + gradient
+
+    """ handles the second point """
+    xend = round (x1);
+    yend = y1 + gradient * (xend - x1);
+    xpxl1 = int(xend)
+    ypxl1 = int (yend)
+    x.append(xpxl1)
+    y.append(ypxl1) 
+    x.append(xpxl1)
+    y.append(ypxl1 + 1)
+
+    """ main loop """
+    for px in range(xpxl0 + 1 , xpxl1):
+        x.append(px)
+        y.append(int(intery))
+        x.append(px)
+        y.append(int(intery) + 1)
+        intery = intery + gradient;
+
+    if steep:
+        y,x = x,y
+
+    return x, y
+
+
 def main():
     ## get the global parameters
     global wcs, imgSize, refUTC, imgScale, mwa, ts, line1, line2, line3
@@ -216,12 +313,12 @@ def main():
     mwa = Topos("26.701276778 S", "116.670846137 E", elevation_m= 377.827)
     ts = load.timescale()    
     
-    intrack_offset_array = np.linspace(-10,10,20)
-    offtrack_offset_array = np.linspace(-0.5,0.5, 20)
+    intrack_offset_array = np.linspace(-10,10,10)
+    offtrack_offset_array = np.linspace(-0.5,0.5, 10)
 
     all_combinations = [(a,b) for a in intrack_offset_array for b in offtrack_offset_array]
 
-    waterfall = np.zeros((20, 20, args.channels))
+    waterfall = np.zeros((10, 10, args.channels))
 
     for f in tqdm(range(args.channels)):
          if args.debug:
@@ -229,14 +326,14 @@ def main():
          global utc_array, cube
          utc_array, cube = getCube(f)
 
-         with multiprocessing.Pool(processes=20) as pool:
+         with multiprocessing.Pool(processes=28) as pool:
              results = pool.starmap(worker, all_combinations)
 
          results = np.array(results)
-         waterfall[:,:,f] = results.reshape((20,20))
+         waterfall[:,:,f] = results.reshape((10,10))
 
 
-
+    np.save(str(args.noradid) + "-" +str(args.obs) + "waterfall.npy", waterfall)
 
     #for f in range(args.channels):
     #    if args.debug:

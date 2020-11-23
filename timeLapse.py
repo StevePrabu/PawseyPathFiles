@@ -83,7 +83,7 @@ def main(args):
     if debug:
         print("obtained tle for {0} objects".format(noObjects))
 
-    ts = load.timescale()
+    ts = load.timescale(builtin=True)
     mwa = Topos("26.703319405555554 S", "116.91558083333334 E", elevation_m= 377.827)
     globalData = np.zeros((imgSize, imgSize))
     globalData2 = np.zeros((imgSize, imgSize))
