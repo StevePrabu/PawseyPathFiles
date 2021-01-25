@@ -154,7 +154,7 @@ def main(args):
         plt.xlabel("RA")
         plt.ylabel("DEC")
         ### plot fov
-        pixcrd = np.array([[0, 0], [0, 99], [99, 0], [99, 99]], dtype=np.float64)
+        pixcrd = np.array([[0, 0], [0, 199], [199, 0], [199, 199]], dtype=np.float64)
         world = wcs.wcs_pix2world(pixcrd, 0)
 
         x, y = big_wcs.wcs_world2pix(world, 0).T

@@ -54,7 +54,11 @@ def obtainTLE(noradid,refUTC):
 
 
 
-
+def getCutOff(distance):
+    ## using nea-field equation from the xiang's metoer paper
+    wavelength = 3.059106714 ## lambda at 98MHz
+    d = np.sqrt(wavelength*distance/2)
+    return d
 
 
 def main(args):
@@ -80,6 +84,7 @@ def main(args):
 
     ## create delta array (in seconds)
     search_timeSteps, search_ra, search_dec = [], [], [] ## contains the timesteps with satellite signal
+    baseline_cutoff = []
     for timeStep in range(int(duration/args.integration)):
 
         ### skip the first 2 timeSteps and the last timeStep
@@ -88,7 +93,7 @@ def main(args):
    
         local_utc = start_utc + timedelta(seconds=timeStep*args.integration)
 
-        local_ts = ts.utc(local_utc.year, local_utc.month, local_utc.day, local_utc.hour, local_utc.minute, local_utc.second + local_utc.microsecond/1000.0)
+        local_ts = ts.utc(local_utc.year, local_utc.month, local_utc.day, local_utc.hour, local_utc.minute, local_utc.second + local_utc.microsecond/1000000.0)
 
         sat.at(local_ts)
         difference = sat - mwa
@@ -96,7 +101,8 @@ def main(args):
         ra, dec, distance = topocentric.radec()
         ra_deg, dec_deg = np.degrees(ra.radians), np.degrees(dec.radians)
         dist = np.sqrt((ra_deg- pointing_ra)**2 + (dec_deg - pointing_dec)**2)
-        print("ra {} dec {} timeStep {} dist {}".format(ra, dec, timeStep, dist))
+        cutOff = getCutOff(distance.m)
+        print("ra {} dec {} timeStep {} dist {} los dist {} cutoff {}".format(ra, dec, timeStep, dist, distance.m, cutOff))
 
         if dist < args.searchRadius:
             ## update ra and dec in chgcentre format
@@ -105,6 +111,7 @@ def main(args):
             search_timeSteps.append(timeStep)
             search_ra.append(ra)
             search_dec.append(dec)
+            baseline_cutoff.append(cutOff)
 
 
 
@@ -113,8 +120,8 @@ def main(args):
 
     with open(str(args.obs)+ "-" + str(args.noradid) + ".csv", "w") as vsc:
         thewriter = csv.writer(vsc)
-        for t, ra, dec in zip(search_timeSteps,search_ra, search_dec):
-            line = [t, ra, dec, "dummyValue"]
+        for t, ra, dec, c in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff):
+            line = [t, ra, dec, c,"dummyValue"]
             thewriter.writerow(line)
    
     ## do the imaging
