@@ -66,10 +66,12 @@ def main(args):
     ## load metafits
     hdu = fits.open(args.metafits) 
     duration = hdu[0].header["EXPOSURE"]
+    quack = float(hdu[0].header["QUACKTIM"])
     try:
         start_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S.%f')
     except:
         start_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S')
+    start_utc =  start_utc + timedelta(seconds=quack) ## update start time for quack time
     pointing_ra = float(hdu[0].header["RA"])
     pointing_dec = float(hdu[0].header["DEC"])
 
