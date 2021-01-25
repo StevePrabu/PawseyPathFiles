@@ -87,6 +87,7 @@ def main(args):
     ## create delta array (in seconds)
     search_timeSteps, search_ra, search_dec = [], [], [] ## contains the timesteps with satellite signal
     baseline_cutoff = []
+    time_array = []
     for timeStep in range(int(duration/args.integration)):
 
         ### skip the first 2 timeSteps and the last timeStep
@@ -114,6 +115,7 @@ def main(args):
             search_ra.append(ra)
             search_dec.append(dec)
             baseline_cutoff.append(cutOff)
+            time_array.append(str(local_utc))
 
 
 
@@ -122,8 +124,8 @@ def main(args):
 
     with open(str(args.obs)+ "-" + str(args.noradid) + ".csv", "w") as vsc:
         thewriter = csv.writer(vsc)
-        for t, ra, dec, c in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff):
-            line = [t, ra, dec, c,"dummyValue"]
+        for t, ra, dec, c, u in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff, time_array):
+            line = [t, ra, dec, c, u]
             thewriter.writerow(line)
    
     ## do the imaging
