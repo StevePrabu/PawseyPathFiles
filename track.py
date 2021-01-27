@@ -124,8 +124,8 @@ def main(args):
 
     with open(str(args.obs)+ "-" + str(args.noradid) + ".csv", "w") as vsc:
         thewriter = csv.writer(vsc)
-        for t, ra, dec, c, u in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff, time_array):
-            line = [t, ra, dec, c, u]
+        for t, ra, dec, c, ut in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff, time_array):
+            line = [t, ra, dec, c, ut, "dummy"]
             thewriter.writerow(line)
    
     ## do the imaging
