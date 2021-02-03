@@ -17,7 +17,7 @@ import csv
 
 
 def obtainTLE(noradid,refUTC):
-    time1 = refUTC + timedelta(hours=-24*2)
+    time1 = refUTC + timedelta(hours=-24*3)
     time2 = refUTC 
     day1, month1, year1 = str(time1.day).zfill(2), str(time1.month).zfill(2), str(time1.year)
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
@@ -66,7 +66,9 @@ def main(args):
     ## load metafits
     hdu = fits.open(args.metafits) 
     duration = hdu[0].header["EXPOSURE"]
-    quack = float(hdu[0].header["QUACKTIM"])
+    #quack = float(hdu[0].header["QUACKTIM"])
+    quack = 3 ## to overcome the hardcoded behaviour of cotter
+
     try:
         start_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S.%f')
     except:
@@ -125,6 +127,8 @@ def main(args):
     with open(str(args.obs)+ "-" + str(args.noradid) + ".csv", "w") as vsc:
         thewriter = csv.writer(vsc)
         for t, ra, dec, c, ut in zip(search_timeSteps,search_ra, search_dec, baseline_cutoff, time_array):
+            ut1, ut2 = str(ut).split(" ")
+            ut = ut1 + "T" + ut2
             line = [t, ra, dec, c, ut, "dummy"]
             thewriter.writerow(line)
    
