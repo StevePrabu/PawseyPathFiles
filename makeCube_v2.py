@@ -12,7 +12,7 @@ from skyfield.api import EarthSatellite
 from skyfield.api import Topos, load
 import json
 from astropy.wcs import WCS
-
+import matplotlib.pyplot as plt
 from os import path
 
 def obtainTLE(noradid,refUTC):
@@ -127,7 +127,26 @@ def main(args):
         cube.append(stack)
     np.save("rotated"+ str(args.noradid) + "-" + str(args.obs) + ".npy", cube)
 
-        
+    ## make images of all 6sigma events
+    for f in range(cube.shape[0]):
+        temp1 = np.copy(cube[f,:,:])
+        temp2 = np.copy(cube[f,:,:])
+        signal = np.nanmax(temp1)
+        temp2[np.abs(temp2) > 3*np.std(temp2)] = 0
+        temp2[np.abs(temp2) > 3*np.std(temp2)] = 0
+
+        noise = np.std(temp2)
+        snr = signal/noise
+
+        if snr >= 6:
+            plt.clf()
+            plt.imshow(cube[f,:,:], origin="lower")
+            plt.colorbar()
+            plt.title("channel {}".format(f))
+            plt.savefig("event" + str(f).zfill(4) + ".png")
+
+
+
              
 
 
