@@ -13,8 +13,8 @@ from skyfield.api import Topos, load
 from tqdm import tqdm
 from astropy.nddata import Cutout2D
 import scipy.optimize as opt
-#import matplotlib
-#matplotlib.use('Agg')
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from astropy.coordinates import EarthLocation
 from astropy.time import Time
@@ -149,7 +149,7 @@ def getSatMWA(line1, line2, line3):
     ts          : the time object
     """
 
-    ts = load.timescale()
+    ts = load.timescale(builtin=True)
     satellite = EarthSatellite(line2, line3, line1, ts)
     mwa = Topos("26.701276778 S", "116.670846137 E", elevation_m= 377.827)
 
@@ -291,10 +291,19 @@ def getHeadPeaks(headTimeSteps, noradid, mwa, sat, ts):
         row, col = np.where(data == np.max(data))
         beam_cutout = Cutout2D(beam, (col, row), (5 ,5 ))
         cutout = Cutout2D(data, (col, row), (5,5))
+        #print("test")
+        #print("data")
+        #print(cutout.data)
+        #print("beam")
+        #print(beam_cutout.data)
+        #beam_cutout.data[np.isnan(beam_cutout.data)] = np.nanmin(beam_cutout.data)
+   
         temp = cutout.data / beam_cutout.data
-        temp /= np.sum(temp)
+        #print(temp)
+        temp /= np.nansum(temp)
 
         initial_guess = (temp[1,1], 1, 1, 2)
+        #print(temp)
         popt, pconv = opt.curve_fit(twoD_Gaussian, (x, y), temp.ravel(), p0=initial_guess)
         perr = np.sqrt(np.diag(pconv))
 
@@ -489,13 +498,14 @@ def getMidPoints(MidTimeSteps, noradid, mwa, sat, ts, x_fit, y_fit, function):
 
     x_array, y_array, ra_array, dec_array, time_array = [] ,[], [], [], []
 
-    if debug:
-        #eprint("recalculating new mid timeSteps")
-        midTimeSteps = [i for i in headTimeSteps if i in tailTimeSteps]
-        #eprint("updated timeSteps are ")
-        #eprint("head " + str(headTimeSteps))
-        #eprint("tail " + str(tailTimeSteps))
-        #eprint("mid " + str(midTimeSteps))
+    midTimeSteps = [i for i in headTimeSteps if i in tailTimeSteps]
+    #if debug:
+    #    #eprint("recalculating new mid timeSteps")
+    #    midTimeSteps = [i for i in headTimeSteps if i in tailTimeSteps]
+    #    #eprint("updated timeSteps are ")
+    #    #eprint("head " + str(headTimeSteps))
+    #    #eprint("tail " + str(tailTimeSteps))
+    #    #eprint("mid " + str(midTimeSteps))
 
     for t in midTimeSteps:
         
@@ -526,6 +536,14 @@ def getMidPoints(MidTimeSteps, noradid, mwa, sat, ts, x_fit, y_fit, function):
         if motion == "E-W":
             min_arg = np.where(fit_val == np.min(fit_val))[0]
             max_arg = np.where(fit_val == np.max(fit_val))[0]
+
+
+            ### check dimension
+            if float(min_arg.shape[0]) > 1:
+                min_arg = min_arg[0]
+            elif float(max_arg.shape[0]) >1:
+                max_arg = max_arg[0]
+
             x_min = x_fit[min_arg]
             x_max = x_fit[max_arg]
 
