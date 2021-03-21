@@ -140,7 +140,7 @@ def getSatMWA(line1, line2, line3):
     ts          : the time object
     """
 
-    ts = load.timescale()
+    ts = load.timescale(builtin=True)
     satellite = EarthSatellite(line2, line3, line1, ts)
     mwa = Topos("26.701276778 S", "116.670846137 E", elevation_m= 377.827)
 
