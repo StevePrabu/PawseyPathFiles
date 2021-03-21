@@ -128,6 +128,7 @@ def main(args):
     np.save("rotated"+ str(args.noradid) + "-" + str(args.obs) + ".npy", cube)
 
     ## make images of all 6sigma events
+    cube = np.array(cube)
     for f in range(cube.shape[0]):
         temp1 = np.copy(cube[f,:,:])
         temp2 = np.copy(cube[f,:,:])
