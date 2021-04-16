@@ -8,6 +8,7 @@ from astropy.wcs import WCS
 from tqdm import tqdm
 from subprocess import call
 import os
+import csv
 
 def floodfill(xs, ys, floodfillValue, data, noise, imgSize):
     """
@@ -49,6 +50,25 @@ def floodfill(xs, ys, floodfillValue, data, noise, imgSize):
     
     return
 
+def xy2RaDec(x_array, y_array, wcs):
+    """
+    converts pixel coords to ra dec
+    Parameters
+    ----------
+    x   : x pixel coord
+    y   : y pixel coord
+    wcs : world coord system obj
+    Returns
+    -------
+    ra  : ra in degrees
+    dec : dec in degrees
+    """
+    pixcrd = np.array([x_array, y_array], dtype=np.float64).T
+    world = wcs.wcs_pix2world(pixcrd, 0)
+    #print(world)
+    ra_array, dec_array = world.T
+    
+    return ra_array, dec_array
 
 
 def checkValid(x,y,floodfillValue, data, noise, imgSize):
@@ -90,9 +110,20 @@ def main(args):
     seeds = np.asarray(np.where(data >= args.seedSigma*noise)).T
     
     counter = 0
+    x_array, y_array = [], [] ## store x,y pixel locations of all seed events
+    snr_array, peakFlux_array = [], [] ## store snr and peak flux for all detected seed events
+
     for seed in tqdm(seeds):
+
+        if searchMap[seed[0],seed[1]] == 1:
+            continue
+        
         counter += 1
         floodfill(seed[0], seed[1], args.floodfillSigma, data, noise, imgSize)
+        x_array.append(seed[0])
+        y_array.append(seed[1])
+        snr_array.append(data[seed[0], seed[1]]/noise)
+        peakFlux_array.append(data[seed[0], seed[1]])
 
     if args.verbose:
         print("{} seed events found".format(counter))
@@ -103,6 +134,23 @@ def main(args):
         bashExecute1 = call(bashSyn1,shell=True)
     hdu_ouput = fits.PrimaryHDU(snrMap,header=hdu[0].header)
     hdu_ouput.writeto("snr-{}".format(args.fileName))
+
+    ## write dected events to file
+    ra_array, dec_array = xy2RaDec(x_array, y_array, wcs)
+
+    if args.verbose:
+        print("writing data to file...",end="")
+
+    with open("eventCatalog.csv", "w") as vsc:
+        thewriter = csv.writer(vsc)
+        thewriter.writerow(["ra", "dec", "x", "y", "peakFlux", "snr"])
+        for ra, dec, x, y, peakFlux, snr in zip(ra_array, dec_array, x_array, y_array, peakFlux_array, snr_array):
+            line = [ra, dec, x, y, peakFlux, snr]
+            thewriter.writerow(line)
+
+    if args.verbose:
+        print("done")
+
     
     ## plot
     plt.subplot(211, projection=wcs)
@@ -123,13 +171,6 @@ def main(args):
 
 
     plt.show()
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
