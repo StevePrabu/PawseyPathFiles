@@ -22,6 +22,7 @@ def floodfill(xs, ys, floodfillValue, data, noise, imgSize):
 
         x, y = q.pop()
         searchMap[x,y] = 1
+        eventMask[x,y] = 1
         snrMap[x,y] = data[x,y]/noise
 
         if checkValid(x+1, y, floodfillValue, data, noise, imgSize):
@@ -102,9 +103,10 @@ def main(args):
         print("estimated global noise in image {} {}".format(noise, unit))
 
     ## create global SNR map
-    global snrMap, searchMap
+    global snrMap, searchMap, eventMask
     snrMap = np.zeros((imgSize, imgSize))
     searchMap = np.zeros((imgSize, imgSize))
+    eventMask = np.zeros((imgSize, imgSize))
     
     ## start source finding
     seeds = np.asarray(np.where(data >= args.seedSigma*noise)).T
@@ -117,13 +119,13 @@ def main(args):
 
         if searchMap[seed[0],seed[1]] == 1:
             continue
-        
+        eventMask = np.zeros((imgSize, imgSize))
         counter += 1
         floodfill(seed[0], seed[1], args.floodfillSigma, data, noise, imgSize)
         x_array.append(seed[0])
         y_array.append(seed[1])
-        snr_array.append(data[seed[0], seed[1]]/noise)
-        peakFlux_array.append(data[seed[0], seed[1]])
+        snr_array.append(np.nanmax(eventMask*data/noise))
+        peakFlux_array.append(np.nanmax(eventMask*data))
 
     if args.verbose:
         print("{} seed events found".format(counter))
