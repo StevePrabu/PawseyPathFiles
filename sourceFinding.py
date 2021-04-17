@@ -93,7 +93,7 @@ def calculateNoise(data, args, unit, imgSize):
     """
 
     ### check if noise map provided
-    if args.noiseMap is None:
+    if args.rms is None or args.bkg is None:
 
         if args.verbose:
             print("noise not map provided. Estimating global uniform noise")
@@ -112,10 +112,19 @@ def calculateNoise(data, args, unit, imgSize):
     else:
 
         if args.verbose:
-            print("using provided noise map file {}".args.noiseMap)
+            print("using provided noise map file")
 
-        hdu = fits.open(args.noiseMap)
-        noise = hdu[0].data[0,0,:,:] 
+        hdu_bkg = fits.open(args.bkg)
+        hdu_rms = fits.open(args.rms)
+
+        if len(hdu_bkg[0].data.shape) == 2:
+            noise = hdu_bkg[0].data + hdu_rms[0].data
+        elif len(hdu_bkg[0].data.shape) == 4:
+            noise = hdu_bkg[0].data[0,0,:,:] + hdu_rms[0].data[0,0,:,:]
+        else:
+            print("input noise map is not in known format")
+            print("terminating.")
+            exit()
 
         ## check if image size and noise map size are equal
         if imgSize != noise.shape:
@@ -125,17 +134,36 @@ def calculateNoise(data, args, unit, imgSize):
 
         return noise
 
+def loadData(hdu):
+    """
+    load data from hdu. Allows for the different spw formats
+    """
+    if len(hdu[0].data.shape) == 2:
+        data = hdu[0].data 
+    elif len(hdu[0].data.shape) == 4:
+        data = hdu[0].data[0,0,:,:] ## this is due to WSClean make 4D array images (due to MWA having 1 spw)
+    else:
+        print("input fits file is not in known format")
+        print("terminating")
+        exit()
+    return data
 
 
 def main(args):
     
     ## open file and extract all parameters from header
     hdu = fits.open(args.fileName)
-    data = hdu[0].data[0,0,:,:]
+    data = loadData(hdu)
     wcs = WCS(hdu[0].header, naxis=2)
     unit = hdu[0].header['BUNIT']
+    beamArea = hdu[0].header['BMAJ']*hdu[0].header['BMIN']
+    areaOfPixel = abs(hdu[0].header["CDELT1"]*hdu[0].header["CDELT2"])
+    pixelsPerBeam = beamArea/areaOfPixel
     imgSize = data.shape
     noise = calculateNoise(data, args, unit, imgSize)
+
+    if args.verbose:
+        print("estimated beam area {}^2 deg and pixels/beam {}".format(beamArea, pixelsPerBeam))
     
     ## create global SNR map
     global snrMap, searchMap, eventMask
@@ -148,7 +176,7 @@ def main(args):
     
     counter = 0
     x_array, y_array = [], [] ## store x,y pixel locations of all seed events
-    snr_array, peakFlux_array = [], [] ## store snr and peak flux for all detected seed events
+    snr_array, peakFlux_array, integratedFlux_array = [], [], [] ## store snr and peak flux for all detected seed events
 
     for seed in tqdm(seeds):
 
@@ -161,6 +189,10 @@ def main(args):
         y_array.append(seed[1])
         snr_array.append(np.nanmax(eventMask*data/noise))
         peakFlux_array.append(np.nanmax(eventMask*data))
+
+        ## calculate no. of beams in source
+        noBeamsInSource = np.sum(eventMask)/pixelsPerBeam
+        integratedFlux_array.append(np.nansum(eventMask*data)/noBeamsInSource) ## convert Jy/beam to integrated Jy
 
     if args.verbose:
         print("{} seed events found".format(counter))
@@ -180,9 +212,9 @@ def main(args):
 
     with open("eventCatalog.csv", "w") as vsc:
         thewriter = csv.writer(vsc)
-        thewriter.writerow(["ra", "dec", "x", "y", "peakFlux", "snr"])
-        for ra, dec, x, y, peakFlux, snr in zip(ra_array, dec_array, x_array, y_array, peakFlux_array, snr_array):
-            line = [ra, dec, x, y, peakFlux, snr]
+        thewriter.writerow(["ra", "dec", "x", "y", "peakFlux (Jy/beam)", "integratedFlux (Jy)","snr"])
+        for ra, dec, x, y, peakFlux, intFlux,snr in zip(ra_array, dec_array, x_array, y_array, peakFlux_array, integratedFlux_array,snr_array):
+            line = [ra, dec, x, y, peakFlux, intFlux,snr]
             thewriter.writerow(line)
 
     if args.verbose:
@@ -215,7 +247,8 @@ if __name__ == "__main__":
     parser.add_argument("--fileName", required=True, help="the name of the input file")
     parser.add_argument("--seedSigma", type=float, default=5, help="the seed value")
     parser.add_argument("--floodfillSigma", type=float, default=3, help="the floodfill value")
-    parser.add_argument("--noiseMap", help="[Optional] input noise map. if not provided, assumes uniform noise")
+    parser.add_argument("--bkg", help="[Optional] input background map")
+    parser.add_argument("--rms", help="[Optional] input RMS map")
     parser.add_argument("--verbose",type=bool,default=True, help="prints out stuff. Default True")
     args = parser.parse_args()
 
