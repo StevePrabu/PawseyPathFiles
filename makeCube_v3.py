@@ -122,18 +122,28 @@ def main(args):
             hduH = fits.open(str(args.obs)+ str(args.band) + "-" + str(args.midName) + "-" + str(t) + "h-" + str(f).zfill(4) + "-dirty.fits" )
             hduT = fits.open(str(args.obs)+ str(args.band) + "-" + str(args.midName) + "-" + str(t) + "t-" + str(f).zfill(4) + "-dirty.fits" )
             diff = hduH[0].data[0,0,:,:] - hduT[0].data[0,0,:,:] 
-            diff = rotate(diff, slope, order=5, reshape=False)
-            global_data.append(diff)
-            w.append(np.std(diff))
-        #stack = np.mean(np.array(global_data), axis=0)
-        w = np.array(w)
-        weights = 1/w
-        stack = np.average(np.array(global_data), axis=0, weights=weights)
-        cube.append(stack)
+        
+            ## the below logic is to avoid getting nans due to inverting noise = 0
+            if np.std(diff) == 0:
+                continue
+            else:
+                diff = rotate(diff, slope, order=5, reshape=False)
+                global_data.append(diff)
+                w.append(np.std(diff))
+
+        if not w:
+            cube.append(np.zeros(diff.shape))
+        else:
+            w = np.array(w)
+            weights = 1/w
+            stack = np.average(np.array(global_data), axis=0, weights=weights)
+            cube.append(stack)
+            
     np.save("weightedRotated"+ str(args.noradid) + "-" + str(args.obs) + ".npy", cube)
 
     ## make images of all 6sigma events
     cube = np.array(cube)
+
     for f in range(cube.shape[0]):
         temp1 = np.copy(cube[f,:,:])
         temp2 = np.copy(cube[f,:,:])
