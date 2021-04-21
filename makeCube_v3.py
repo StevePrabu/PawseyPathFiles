@@ -138,11 +138,16 @@ def main(args):
             weights = 1/w
             stack = np.average(np.array(global_data), axis=0, weights=weights)
             cube.append(stack)
-            
+
     np.save("weightedRotated"+ str(args.noradid) + "-" + str(args.obs) + ".npy", cube)
 
     ## make images of all 6sigma events
     cube = np.array(cube)
+
+    ### check if cube is full of nans, and if so exit(1)
+    if np.all(np.isnan(cube)):
+        print("cube full of zeros. terminating..")
+        sys.exit(1)
 
     for f in range(cube.shape[0]):
         temp1 = np.copy(cube[f,:,:])
