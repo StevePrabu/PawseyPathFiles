@@ -16,21 +16,21 @@ from subprocess import call
 import csv
 
 
-def obtainTLE(noradid,refUTC):
+def obtainTLE(noradid,refUTC, obs):
     time1 = refUTC + timedelta(hours=-24*3)
     time2 = refUTC 
     day1, month1, year1 = str(time1.day).zfill(2), str(time1.month).zfill(2), str(time1.year)
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
     date_range = ops.make_range_string(year1 + "-" + month1 + "-" + day1, year2 + "-" + month2 + "-" + day2)
 
-    if path.exists(str(noradid) + ".txt") == False:
+    if path.exists(str(noradid) + str(obs) + ".txt") == False:
 
         if debug:
             print("requesting file from server")
 
         result = query.tle_query(epoch=date_range,norad_cat_id=noradid)
 
-        with open(str(noradid) + ".txt", "w") as outfile:
+        with open(str(noradid) + str(obs) +  ".txt", "w") as outfile:
             json.dump(result.json(), outfile)
 
         line1 = result.json()[0]["OBJECT_NAME"]
@@ -42,7 +42,7 @@ def obtainTLE(noradid,refUTC):
         if debug:
             print("tle file found on disk. Not downloading.")
 
-        with open(str(noradid) + ".txt") as json_file:
+        with open(str(noradid) + str(obs) + ".txt") as json_file:
             result = json.load(json_file)
 
         line1 = result[0]["OBJECT_NAME"]
@@ -79,7 +79,7 @@ def main(args):
 
 
     ## get tle 
-    line1, line2, line3 = obtainTLE(args.noradid, start_utc)
+    line1, line2, line3 = obtainTLE(args.noradid, start_utc, args.obs)
     print(line2)
     print(line3)
     ts = load.timescale(builtin=True)
