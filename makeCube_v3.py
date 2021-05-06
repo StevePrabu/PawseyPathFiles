@@ -15,7 +15,7 @@ from astropy.wcs import WCS
 import matplotlib.pyplot as plt
 from os import path
 
-def obtainTLE(noradid,refUTC):
+def obtainTLE(noradid,refUTC, obs):
     debug = True
     time1 = refUTC + timedelta(hours=-24*2)
     time2 = refUTC 
@@ -23,14 +23,14 @@ def obtainTLE(noradid,refUTC):
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
     date_range = ops.make_range_string(year1 + "-" + month1 + "-" + day1, year2 + "-" + month2 + "-" + day2)
 
-    if path.exists(str(noradid) + ".txt") == False:
+    if path.exists(str(noradid) + str(obs) + ".txt") == False:
 
         if debug:
             print("requesting file from server")
 
         result = query.tle_query(epoch=date_range,norad_cat_id=noradid)
 
-        with open(str(noradid) + ".txt", "w") as outfile:
+        with open(str(noradid) + str(obs) + ".txt", "w") as outfile:
             json.dump(result.json(), outfile)
 
         line1 = result.json()[0]["OBJECT_NAME"]
@@ -42,7 +42,7 @@ def obtainTLE(noradid,refUTC):
         if debug:
             print("tle file found on disk. Not downloading.")
 
-        with open(str(noradid) + ".txt") as json_file:
+        with open(str(noradid) + str(obs) + ".txt") as json_file:
             result = json.load(json_file)
 
         line1 = result[0]["OBJECT_NAME"]
@@ -100,7 +100,7 @@ def main(args):
     ### get tle
     hdu = fits.open(str(args.obs)+ str(args.band) + "-" + str(args.midName) + "-" + str(timeSteps[0]) + "h-" + str(0).zfill(4) + "-dirty.fits" )
     ref_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S.%f')
-    line1, line2, line3 = obtainTLE(args.noradid,ref_utc)
+    line1, line2, line3 = obtainTLE(args.noradid,ref_utc, args.obs)
     sat = getSat(line1, line2, line3)
     
     
