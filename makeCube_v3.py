@@ -136,8 +136,11 @@ def main(args):
         else:
             w = np.array(w)
             weights = 1/w
-            stack = np.average(np.array(global_data), axis=0, weights=weights)
-            cube.append(stack)
+            try:
+                stack = np.average(np.array(global_data), axis=0, weights=weights)
+                cube.append(stack)
+            except:
+                cube.append(np.zeros(diff.shape))
 
     np.save("weightedRotated"+ str(args.noradid) + "-" + str(args.obs) + ".npy", cube)
 
