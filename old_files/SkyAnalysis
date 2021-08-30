@@ -1,0 +1,171 @@
+#!/usr/bin/python
+from __future__ import division
+from __future__ import print_function
+from astropy.io import fits
+import numpy as np
+from astropy.wcs import WCS
+from astropy.nddata import Cutout2D
+import os.path
+import ephem
+import time
+from datetime import datetime, timedelta
+import csv
+import astropy.units as u
+from astropy.coordinates import AltAz, SkyCoord, EarthLocation
+from astropy.utils import iers
+from argparse import ArgumentParser
+from subprocess import call
+
+
+iers.conf.auto_download = False
+mwa = ephem.Observer()
+mwa.lon = '116:40:14.93485'
+mwa.lat = '-26:42:11.94986'
+mwa.elevation = 377.827 #from sea level
+
+global pos
+pos = EarthLocation(lon=116.67083333*u.deg, lat=-26.70331941*u.deg, height=377.827*u.m)
+
+def getAltAz(x, y, time, wcs):
+    pixcrd = np.asarray([[x,y]],dtype=np.float64)
+    world = wcs.wcs_pix2world(pixcrd,0)
+    coord = SkyCoord(world[0,0], world[0,1],unit=(u.deg,u.deg))
+    coord.time = time + timedelta(hours=pos.lon.hourangle)
+    coord = coord.transform_to(AltAz(obstime=time, location=pos))
+    return np.degrees(coord.alt.rad), np.degrees(coord.az.rad)
+
+def obtainRCS(satid):
+    RCS = ""
+    w = open("/astro/mwasci/sprabu/satellites/MWA-fast-image-transients/HexFMSurveySolution/RCS.txt")
+    rline = w.readline()
+    while rline:
+        local_ID =int( rline[13] + rline[14] + rline[15] + rline[16] + rline[17])
+        if satid == local_ID:
+            local_rcs = str(rline[119] + rline[120] + rline[121] + rline[122] + rline[123] + rline[124] + rline[125] + rline[126])
+            RCS = local_rcs.replace(" ", "")
+            break
+        rline = w.readline()
+    return RCS
+
+def obtainSat(noradid,tlePath):
+    f = open( str(tlePath)+ "/FULLTLE.txt")
+    line = f.readline()
+    counter = 1
+    while line:
+        if counter%2 == 1:
+            line2 = line
+        else:
+            line3 = line
+            satID = int(line2[2] + line2[3] + line2[4] + line2[5] + line2[6] )
+            if satID == noradid:
+                break
+        counter +=1                
+        line = f.readline()
+    sat = ephem.readtle("sat",line2,line3)
+    return sat
+
+def floodfill(x,y,floodfillValue,diff):
+    if diff[x,y] >= floodfillValue and binaryMapTemp[x,y] ==0:
+        binaryMapTemp[x,y] = 1
+        if diff[x,y] > binaryMap[x,y]:
+            binaryMap[x,y] = diff[x,y]
+        if 1 < x < (1400-1) and 1 < y < (1400-1):
+            floodfill(x+1,y,floodfillValue,diff)
+            floodfill(x,y+1,floodfillValue,diff)
+            floodfill(x-1,y,floodfillValue,diff)
+            floodfill(x,y-1,floodfillValue,diff)
+            floodfill(x-1,y-1,floodfillValue,diff)
+            floodfill(x+1,y-1,floodfillValue,diff)
+            floodfill(x-1,y+1,floodfillValue,diff)
+            floodfill(x+1,y+1,floodfillValue,diff)
+
+
+
+def main(inputList):
+    obs, noradid,  tlePath = inputList[0]
+    with open("obs_"+ str(obs) + "_noradid_"+ str(noradid) + "_SkyAnalysis.csv","w") as vsc:
+        thewriter = csv.writer(vsc)
+        thewriter.writerow(["noradid","obs","az","elv","radius","freqInfo","range","RCS","time", "timeStep"]) 
+    
+        #inputList = [[1165782016,28898]]
+
+        for i in inputList:
+            global binaryMap
+            binaryMap = np.zeros((1400,1400))
+            obs, noradid, tlePath = i
+            sat = obtainSat(noradid,tlePath)
+            for timeStep in range(notimeSteps):
+                try:
+                    hdu = fits.open("6Sigma3Floodfill1SigmaRFIBinaryMap-t" +str(timeStep).zfill(4) +  ".fits")
+                except:
+                    print("file not found")
+                    continue
+                print("reading timeStep " + str(timeStep))
+                wcs = WCS(hdu[0].header,naxis=2)
+                UTCTime = datetime.strptime(hdu[0].header['DATE-OBS'][:-2], '%Y-%m-%dT%H:%M:%S')
+                mwa.date = UTCTime
+                sat.compute(mwa)
+                x,y = wcs.all_world2pix([[np.degrees(sat.ra.real), np.degrees(sat.dec.real)]], 1)[0]
+                radius = np.sqrt((x-700)**2.0+(y-700)**2.0)
+                print("raidus is " + str(radius))
+                if radius < 800:
+                    ## save meta data
+                    print("sat within radius")
+                    for f in range(384):
+                        f += 384
+                        printSent = "working on freq " + str(f)
+                        #print( printSent, end = '\r')
+                        hdu1 = fits.open(str(obs) + "-2m-" + str(timeStep) + "-" + str(f).zfill(4) + "-dirty.fits")
+                        hdu2 = fits.open(str(obs) + "-2m-" + str(timeStep+1) + "-" + str(f).zfill(4) + "-dirty.fits")
+                        diff = hdu2[0].data[0,0,:,:] - hdu1[0].data[0,0,:,:]
+                        if np.all(diff == 0):
+                            continue
+                        global binaryMapTemp
+                        binaryMapTemp = np.zeros((1400,1400))
+                        std = np.std(diff)
+                        seedValue = 6.0*std
+                        floodfillValue = 3.0*std
+                        maxPoint = np.asarray(np.where(diff == np.max(diff)))
+                        maxPointRadius = np.sqrt((maxPoint[0][0]- y)**2.0 + (maxPoint[1][0]-x)**2.0)
+                        #print("x="+ str(x) + " and max_X=" + str(maxPoint[0][0])+ " and y=" + str(y) + " and max_Y=" + str(maxPoint[1][0]))
+                        if diff[maxPoint[0][0],maxPoint[1][0]] < seedValue:
+                            #print("not valid point", end='\r')
+                            continue
+                        if maxPointRadius > 150:
+                            print("rejected max point radius is " + str(maxPointRadius) + " at f " + str(f))
+                            print("x="+ str(x) + " and max_X=" + str(maxPoint[1][0])+ " and y=" + str(y) + " and max_Y=" + str(maxPoint[0][0]))
+                            continue
+                        print("accepted radius is " + str(maxPointRadius))
+                        print("x="+ str(x) + " and max_X=" + str(maxPoint[1][0])+ " and y=" + str(y) + " and max_Y=" + str(maxPoint[0][0]))
+                        freq_info = str(f) + "_amp_" + str(diff[maxPoint[0][0],maxPoint[1][0]])
+                        floodfill(maxPoint[0][0], maxPoint[1][0], floodfillValue,diff)
+                        contourPoints = np.asarray(np.where(binaryMapTemp ==1)).T
+                        print("writing data to csv..........") 
+                        for p in contourPoints:
+                            px,py = p
+                            palt, paz =  getAltAz(py, px, UTCTime,wcs)                        
+                            output_line = [noradid, obs, paz, palt, radius,freq_info,str(float(sat.range)/1000.0) ,obtainRCS(noradid),UTCTime,timeStep]
+                            thewriter.writerow(output_line)
+                            #print(output_line)
+            bashSyn = "rm " + "sat_no" + str(noradid) + "_obs_" + str(obs) + ".fits"
+            bashEx = call(bashSyn,shell=True)
+            hdun = fits.PrimaryHDU(binaryMap,header = hdu[0].header)
+            hdun.writeto("sat_no" + str(noradid) + "_obs_" + str(obs) + ".fits")
+
+
+
+   
+
+
+if __name__ == "__main__":
+    parser = ArgumentParser("Sky Analysis", description="extracts meta data for satellite detections")
+    parser.add_argument("--obs",required=True,type=int,help="The observation id")
+    parser.add_argument("--satid",required=True,type=int,help="The norad ID of the satellite")
+    parser.add_argument("--notimeSteps",default=56,type=int,help="The number of timeSteps to search in")
+    parser.add_argument("--tle",required=True,help="The absolute path to tle files")
+    args = parser.parse_args()
+
+    global notimeSteps
+    notimeSteps = args.notimeSteps
+    inputList = [[args.obs, args.satid, args.tle]]
+    main(inputList)

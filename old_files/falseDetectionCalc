@@ -1,0 +1,99 @@
+#!/usr/bin/python
+from argparse import ArgumentParser
+import ephem
+import time
+#from scipy.stats import skew
+from datetime import datetime, timedelta
+#from scipy import stats
+#from scipdey.stats import norm
+#from scipy.optimize import leastsq,curve_fit,minimize
+#from scipy import special
+#from scipy.signal import find_peaks
+import csv
+from subprocess import call
+import time
+from datetime import datetime, timedelta
+from scipy.spatial import distance
+import numpy as np
+from astropy.io import fits
+
+
+def floodfill(x,y,floodfillValue,diff,imgSize,rc):
+
+    if diff[x,y] >= floodfillValue and binaryMapTemp[x,y] ==0 and rc <200:
+        rc += 1
+        binaryMap[x,y] = 1
+        binaryMapTemp[x,y] = 1
+        binarMapNoFreq[x,y] += 1
+        if diff[x,y] > binaryMapPeakFlux[x,y]:
+            binaryMapPeakFlux[x,y] = diff[x,y]
+        binaryMapDistFromPC[x,y] = np.sqrt((x-(imgSize/2.0))**2.0+(y-(imgSize/2.0))**2.0)*0.0833333
+        if 1 < x < (imgSize-1) and 1 < y < (imgSize-1):
+            floodfill(x+1,y,floodfillValue,diff,imgSize,rc)
+            floodfill(x,y+1,floodfillValue,diff,imgSize,rc)
+            floodfill(x-1,y,floodfillValue,diff,imgSize,rc)
+            floodfill(x,y-1,floodfillValue,diff,imgSize,rc)
+            floodfill(x-1,y-1,floodfillValue,diff,imgSize,rc)
+            floodfill(x+1,y-1,floodfillValue,diff,imgSize,rc)
+            floodfill(x-1,y+1,floodfillValue,diff,imgSize,rc)
+            floodfill(x+1,y+1,floodfillValue,diff,imgSize,rc)
+    return
+
+
+def main():
+    parser = ArgumentParser("FalseDetectionCalculator", description="finds the number of false detections outside the fm band")
+    parser.add_argument("--obs",required=True,help="the observation id")
+    parser.add_argument("--timeStep")
+    parser.add_argument('--seedSigma', default=8, help="The sigma threshold for RFI seeding" )
+    args = parser.parse_args()
+
+    timeStep = args.timeStep
+    imgSize = 1400
+    global binaryMap
+    binaryMap = np.zeros((imgSize,imgSize))
+    global binaryMapNoPixels
+    binaryMapNoPixels = np.zeros((imgSize,imgSize))
+    global binarMapNoFreq
+    binarMapNoFreq = np.zeros((imgSize,imgSize))
+    global binaryMapPeakFlux
+    binaryMapPeakFlux = np.zeros((imgSize,imgSize))
+    global binaryMapDistFromPC
+    binaryMapDistFromPC = np.zeros((imgSize,imgSize))
+    #global binaryMapSeed
+    #binaryMapSeed = np.zeros((imgSize,imgSize))
+    with open("noDetections-timeStep" + str(timeStep) + ".csv", "w") as vsc:
+        thewriter = csv.writer(vsc)
+        thewriter.writerow(["no detections"])
+        detections = 0
+        for f in range(768):
+            if timeStep in [0]:
+                break
+            hdu1 = fits.open(str(args.obs) + "-2m-" + str(timeStep) + "-" + str(f).zfill(4) + "-dirty.fits")
+            hdu2 = fits.open(str(args.obs) + "-2m-" + str(int(timeStep)+1) + "-" + str(f).zfill(4) + "-dirty.fits")
+            diff = hdu2[0].data[0,0,:,:] - hdu1[0].data[0,0,:,:]
+            std = np.std(diff)
+            if np.all(diff == 0):
+                continue
+            freq =  hdu2[0].header['CRVAL3']
+            if freq/1000000.0 > 87.5:
+                continue
+
+            seedValue = float(args.seedSigma)*std
+            floodfillValue = 3*std
+
+            maxPoint = np.asarray(np.where(diff == np.max(diff)))
+            if diff[maxPoint[0][0],maxPoint[1][0]] < seedValue:
+                continue
+            detections +=1
+            global binaryMapTemp
+            binaryMapTemp = np.zeros((imgSize,imgSize))
+
+
+            #binaryMapSeed[maxPoint[0][0], maxPoint[1][0]] = 1
+            rc = 0
+            floodfill(maxPoint[0][0], maxPoint[1][0], floodfillValue,diff , imgSize,rc)
+        thewriter.writerow([detections])
+
+
+if __name__ == "__main__":
+    main()
