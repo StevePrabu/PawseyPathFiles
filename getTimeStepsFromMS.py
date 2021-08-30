@@ -21,7 +21,7 @@ def listTimeStamps(ms):
     ## write info to file
     file1 = open("tmp.txt", "w")
     file1.write("TIMESTEPS={}\n".format(len(output_times)))
-    file1.write("INTIME={}".format(np.mean(diff)))
+    file1.write("INTTIME={}".format(np.mean(diff)))
     file1.close()
 
     return output_times
