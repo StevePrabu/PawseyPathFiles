@@ -45,8 +45,8 @@ def getTLE(t):
             print("requesting file from server")
 
         date_range = ops.make_range_string(year1 + "-" + month1 + "-" + day1, year2 + "-" + month2 + "-" + day2)
-        #result = query.tle_query(epoch=date_range)
-        result = query.tle_publish_query(publish_epoch=date_range)
+        result = query.tle_query(epoch=date_range)
+        #result = query.tle_publish_query(publish_epoch=date_range)
         
         ## write catalog to file
         with open("TLE_catalog" + custom_name + ".txt", "w") as outfile:
@@ -317,9 +317,9 @@ def main(args):
 
     for t in tqdm(timeSteps):
 
-        hdu = fits.open("6Sigma3FloodfillSigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
-        hduSeed = fits.open("6Sigma3FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
-        NeghduSeed = fits.open("Neg6Sigma3FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
+        hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
+        hduSeed = fits.open("6Sigma1FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
+        NeghduSeed = fits.open("Neg6Sigma1FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")
         dataSeed = hduSeed[0].data
         NegdataSeed = NeghduSeed[0].data
         data = hdu[0].data
@@ -422,7 +422,7 @@ if __name__ == "__main__":
     query = st.SpaceTrackClient(args.user, args.passwd)
 
     ## get header info and make them global
-    hdu = fits.open("6Sigma3FloodfillSigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
+    hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(args.t1).zfill(4) + ".fits")
     
     global wcs, imgSize, pixel_scale, startUTC
     wcs = WCS(hdu[0].header, naxis=2)
