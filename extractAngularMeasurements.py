@@ -597,18 +597,7 @@ def main(args):
     ## get head data
     head_x, head_y, head_x_err, head_y_err = getHeadPeaks(headTimeSteps, args.norad, mwa, sat, ts, args)
     tail_x, tail_y, tail_x_err, tail_y_err = getTailPeaks(tailTimeSteps, args.norad, mwa, sat, ts, args)
-
-    ## testing (delete after testing)
-    np.save("head_x.npy", head_x)
-    np.save("head_err_x.npy", head_x_err)
-    np.save("head_y.npy", head_y)
-    np.save("head_err_y.npy", head_y_err)
-
-    np.save("tail_x.npy", tail_x)
-    np.save("tail_err_x.npy", tail_x_err)
-    np.save("tail_y.npy", tail_y)
-    np.save("tail_err_y.npy", tail_y_err)
-    
+   
     
     ## determine if the motion if E-W or N-S 
     deltaX = abs(np.max(head_x) - np.min(head_x))
