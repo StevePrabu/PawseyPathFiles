@@ -39,6 +39,7 @@ def main(args):
     msflags = ms.getcol("FLAG")
     msflagrows = ms.getcol("FLAG_ROW")
     msantname = ms.ANTENNA.getcol("NAME")
+    ms.close()
 
     if debug:
         elapsed = tm.time() - start
