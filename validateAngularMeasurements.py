@@ -64,7 +64,7 @@ def main(args):
     plt.xlabel("ref time")
     plt.ylabel("dy/dt")    
 
-    plt.savefig("validationAngularMeasurements.png")
+    plt.savefig("validationAngularMeasurements{}.png".format(args.norad))
 
 
 
@@ -73,6 +73,7 @@ def main(args):
 if __name__ == "__main__":
     parser = ArgumentParser("validate angular measurements", description="validates the extracted angular measurements")
     parser.add_argument("--file",required=True, help="the angular measurements of the pass")
+    parser.add_argument("--norad",required=True, type=int,help="the noradid")
     args = parser.parse_args()
 
     main(args)
