@@ -45,7 +45,7 @@ def loadSolution(fileName):
     e = line.split(" ")[5]
     aop = line.split(" ")[7]
     ma = line.split(" ")[9]
-    mm = line.split(" ")[11][:-2]
+    mm = line.split(" ")[11]
 
     line = f.readline()
     line = f.readline()
@@ -55,7 +55,7 @@ def loadSolution(fileName):
     e_err = line.split(" ")[5]
     aop_err = line.split(" ")[7]
     ma_err = line.split(" ")[9]
-    mm_err = line.split(" ")[11][:-2]
+    mm_err = line.split(" ")[11]
 
     return i, ra, e, aop, ma, mm, i_err, ra_err, e_err, aop_err, ma_err, mm_err
 
