@@ -429,7 +429,11 @@ def getMidPoints(midTimeSteps, mwa, sat, ts, x_fit, y_fit, function, args):
             fit_val = []
             #x_inv, y_inv = [], []
             for x, y in zip(x_streak, y_streak):
-                fit_val.append(streak[int(y), int(x)])
+                try:
+                    fit_val.append(streak[int(y), int(x)])
+                except:
+                    fit_val.append(streak[int(y[0]), int(x[0])])
+                
   
             
             mid_arg = np.where(np.abs(fit_val) == np.min(np.abs(fit_val)))[0]
@@ -459,7 +463,10 @@ def getMidPoints(midTimeSteps, mwa, sat, ts, x_fit, y_fit, function, args):
 
             fit_val = []
             for x,y in zip(x_streak, y_streak):
-                fit_val.append(streak[int(y), int(x)])
+                try:
+                    fit_val.append(streak[int(y), int(x)])
+                except:
+                    fit_val.append(streak[int(y[0]), int(x[0])])
 
             mid_arg = np.where(np.abs(fit_val) == np.min(np.abs(fit_val)))[0]
             if len(mid_arg) == 1:
@@ -470,8 +477,14 @@ def getMidPoints(midTimeSteps, mwa, sat, ts, x_fit, y_fit, function, args):
                 y_mid = y_streak[mid_arg[0]]
 
         #print(int(x_mid))
-        x_mid = float(x_mid)
-        y_mid = float(y_mid)
+        try:
+            x_mid = float(x_mid)
+        except:
+            x_mid = float(x_mid[0])
+        try:
+            y_mid = float(y_mid)
+        except:
+            y_mid = float(y_mid[0])
         x_array.append(x_mid)
         y_array.append(y_mid)
 
