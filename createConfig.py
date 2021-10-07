@@ -82,7 +82,9 @@ def getIntialGuess(result, obs_dayofyear, args):
 
     ## get the most likely change in value per day (used for generating boundary conditions)
     e_per_day = np.nanmedian(np.divide(np.abs(e_array[1:] - e_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
-    i_per_day = np.nanmax(np.divide(np.abs(i_array[1:] - i_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
+    i_per_day = np.nanmedian(np.divide(np.abs(i_array[1:] - i_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
+    if i_per_day == 0:
+        i_per_day = np.nanmax(np.divide(np.abs(i_array[1:] - i_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
     ra_per_day = np.nanmedian(np.divide(np.abs(ra_array[1:] - ra_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
     aop_per_day = np.nanmedian(np.divide(np.abs(aop_array[1:] - aop_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
     mm_per_day = np.nanmedian(np.divide(np.abs(mm_array[1:] - mm_array[:-1]), np.abs(doy_array[1:] - doy_array[:-1])))
