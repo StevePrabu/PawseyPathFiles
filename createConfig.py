@@ -91,7 +91,10 @@ def getIntialGuess(result, obs_dayofyear, args):
     ref_dates = date_array - (obs_dayofyear - args.deltaGuess)
 
     ## since we only query the tles from the past, the max ref date is the intial gues
-    guess_arg = int(np.where(ref_dates == np.max(ref_dates))[0])
+    if np.where(ref_dates == np.max(ref_dates))[0].shape[0] == 2:
+        guess_arg = int(np.where(ref_dates == np.max(ref_dates))[0][0])
+    elif np.where(ref_dates == np.max(ref_dates))[0].shape[0] == 2:
+        guess_arg = int(np.where(ref_dates == np.max(ref_dates))[0])
     
     ## intial guess
     guess_i = i_array[guess_arg]
