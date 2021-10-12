@@ -19,7 +19,7 @@ import csv
 import sys
 
 
-def obtainTimeSteps(noradid):
+def obtainTimeSteps(noradid, args):
     """
     returns the timeSteps to search for signal
     by searching the json file made by satSearch.py
@@ -32,8 +32,14 @@ def obtainTimeSteps(noradid):
     tailTimeSteps   : the list of tail timeSteps
     midTimeSteps    : the list of mid timeSteps  
     """
-    with open("filtered_summary.json") as f:
-        filtered_summary = json.load(f)
+
+    if args.allowNotFilteredDetections:
+        with open("detection_summary.json") as f:
+            filtered_summary = json.load(f)
+
+    else:    
+        with open("filtered_summary.json") as f:
+            filtered_summary = json.load(f)
 
     for line in filtered_summary:
         if filtered_summary[line]['norad'] == str(noradid):
@@ -585,7 +591,7 @@ def main(args):
 
     ## get relevant timeSteps
     global headTimeSteps, tailTimeSteps, midTimeSteps
-    headTimeSteps, tailTimeSteps, midTimeSteps = obtainTimeSteps(args.norad)
+    headTimeSteps, tailTimeSteps, midTimeSteps = obtainTimeSteps(args.norad, args)
 
     if debug:
         print("the selected timeSteps " + str(headTimeSteps))
@@ -710,6 +716,7 @@ if __name__ == "__main__":
     parser.add_argument("--passwd", required=True, help="the password of space-track.org")
     parser.add_argument("--debug", default=False, type=bool, help="run script in debug mode (default=False)")
     parser.add_argument("--filePrefix", default="6Sigma1FloodfillSigmaRFIBinaryMapPeakFlux", type=str, help="the prefix of the file name")
+    parser.add_argument("--allowNotFilteredDetections", default=False, type=bool, help="allows to read time-steps from detection_")
     args = parser.parse_args()
 
     global debug, query, beam
