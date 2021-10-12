@@ -95,7 +95,7 @@ def getIntialGuess(result, obs_dayofyear, args):
     ## since we only query the tles from the past, the max ref date is the intial gues
     if np.where(ref_dates == np.max(ref_dates))[0].shape[0] == 2:
         guess_arg = int(np.where(ref_dates == np.max(ref_dates))[0][0])
-    elif np.where(ref_dates == np.max(ref_dates))[0].shape[0] == 2:
+    else
         guess_arg = int(np.where(ref_dates == np.max(ref_dates))[0])
     
     ## intial guess
