@@ -482,17 +482,8 @@ def getMidPoints(midTimeSteps, mwa, sat, ts, x_fit, y_fit, function, args):
                 x_mid = x_streak[mid_arg[0]]
                 y_mid = y_streak[mid_arg[0]]
 
-        #print(int(x_mid))
-        try:
-            x_mid = float(x_mid)
-        except:
-            x_mid = float(x_mid[0])
-        try:
-            y_mid = float(y_mid)
-        except:
-            y_mid = float(y_mid[0])
-        x_array.append(x_mid)
-        y_array.append(y_mid)
+        x_array.append(np.average(x_mid))
+        y_array.append(np.average(y_mid))
 
     return x_array, y_array, time_array
        
