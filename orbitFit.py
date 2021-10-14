@@ -352,7 +352,7 @@ def main(args):
     ## calcualte in-track and cross-track residuals
     x_array, y_array, utc_array, t_array = readDetectionFile(args)
     time_vector = createTsTimeVector(utc_array)
-    fit_x, fit_y = getSatXY("sat" ,new_tle_line2, new_tile_line3, time_vector)
+    fit_x, fit_y = getSatXY("sat" ,new_tle_line2, new_tle_line3, time_vector)
     def Slope(x1, y1, x2, y2):
         return np.arctan2(y2-y1,x2-x1)
 
