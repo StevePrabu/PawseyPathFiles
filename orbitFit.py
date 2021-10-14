@@ -349,12 +349,57 @@ def main(args):
     ## get new tle
     new_tle_line3 = constructTLE(new_i, new_ra, new_e, new_aop, new_ma, new_mm, args.norad)
 
+    ## calcualte in-track and cross-track residuals
+    x_array, y_array, utc_array, t_array = readDetectionFile(args)
+    time_vector = createTsTimeVector(utc_array)
+    fit_x, fit_y = getSatXY("sat" ,new_tle_line2, new_tile_line3, time_vector)
+    def Slope(x1, y1, x2, y2):
+        return np.arctan2(y2-y1,x2-x1)
+
+    def getSlope(index, x_array, y_aray):
+        try:
+            x1 = x_array[index]
+            y1 = y_array[index]
+            x2 = x_array[index+1]
+            y2 = y_array[index+1]
+        except:
+            x1 = x_array[index-1]
+            y1 = y_array[index-1]
+            x2 = x_array[index]
+            y2 = y_array[index]
+        
+        return Slope(x1, y1, x2, y2)
+
+    def getInTrackAndCrossTrack(index, fit_x, fit_y, x_array, y_array):
+        deltaX  = -(x_array[index] - fit_x[index])
+        deltaY  = -(y_array[index] - fit_y[index])
+    
+        theta = getSlope(index, x_array, y_array)
+    
+        inTrack = deltaX*np.cos(theta) + deltaY*np.sin(theta)
+        crossTrack = deltaX*np.sin(theta) - deltaY*np.cos(theta)
+    
+        return inTrack, crossTrack
+
+    in_track_array, cross_track_array = [], []
+    for i in range(len(fit_x)):
+        inTrack , offTrack = getInTrackAndCrossTrack(i, fit_x, fit_y, x_array, y_array)
+        in_track_array.append(inTrack)
+        cross_track_array.append(offTrack)
+
+    inTrackRMS = np.sqrt(np.mean(np.square(in_track_array)))
+    crossTrackRMS = np.sqrt(np.mean(np.square(cross_track_array)))
+
+
+
+
     ## save data to file
     with open(str(args.deltaGuess) + "delta"+str(args.obs) + "n" + str(args.norad) + ".txt", "w") as the_file:
         the_file.write("Orbit Determination Solution\n")
         the_file.write("i {0} ra {1} e {2} aop {3} ma {4} mm {5}\n".format(new_i, new_ra, new_e, new_aop, new_ma, new_mm))
         the_file.write("and the corresponding error\n")
         the_file.write("i {0} ra {1} e {2} aop {3} ma {4} mm {5}\n".format(err_i, err_ra, err_e, err_aop, err_ma, err_mm))
+        the_file.write("in-track RMS {}(pixels) cross-track RMS {}".format(inTrackRMS, crossTrackRMS))
         the_file.write("below is the new tle\n")
         the_file.write("{}\n".format(new_tle_line2))
         the_file.write("{}".format(new_tle_line3))
