@@ -399,7 +399,7 @@ def main(args):
         the_file.write("i {0} ra {1} e {2} aop {3} ma {4} mm {5}\n".format(new_i, new_ra, new_e, new_aop, new_ma, new_mm))
         the_file.write("and the corresponding error\n")
         the_file.write("i {0} ra {1} e {2} aop {3} ma {4} mm {5}\n".format(err_i, err_ra, err_e, err_aop, err_ma, err_mm))
-        the_file.write("in-track RMS {}(pixels) cross-track RMS {}".format(inTrackRMS, crossTrackRMS))
+        the_file.write("in-track RMS {}(pixels) cross-track RMS {} (pixels)\n".format(inTrackRMS, crossTrackRMS))
         the_file.write("below is the new tle\n")
         the_file.write("{}\n".format(new_tle_line2))
         the_file.write("{}".format(new_tle_line3))
