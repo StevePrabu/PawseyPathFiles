@@ -7,8 +7,8 @@ def main(args):
     importuvfits(fitsfile=args.uvfits, vis="{}native_res.ms".format(args.obs))
 
     ## perform channel donw-sampling
-    mstransform(vis="{}native_res.ms".format(args.obs),outputvis="{}.ms".format(args.obs),chanaverage=True, chanbin=(4))
-    
+    mstransform(vis="{}native_res.ms".format(args.obs),outputvis="{}.ms".format(args.obs),chanaverage=True, chanbin=(4),datacolumn="DATA")
+
 
 if __name__ == "__main__":
     parser = ArgumentParser("uvfits2ms", description="script to convert uvfits to ms format using CASA tasks")
