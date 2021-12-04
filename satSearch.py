@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-def getTLE(t):
+def getTLE(t, args):
     """
     gets the catalog of unique objects for the requested date range
 
@@ -45,8 +45,14 @@ def getTLE(t):
             print("requesting file from server")
 
         date_range = ops.make_range_string(year1 + "-" + month1 + "-" + day1, year2 + "-" + month2 + "-" + day2)
-        result = query.tle_query(epoch=date_range)
-        #result = query.tle_publish_query(publish_epoch=date_range)
+        print(date_range)
+
+        ## use of the two methods to perform query
+        if args.APImethod2:
+            result = query.tle_publish_query(publish_epoch=date_range)
+        else:
+            result = query.tle_query(epoch=date_range)
+        
         
         ## write catalog to file
         with open("TLE_catalog" + custom_name + ".txt", "w") as outfile:
@@ -55,21 +61,24 @@ def getTLE(t):
         entries = len(result.json()[:])
         catalog = result.json()
 
-        ## iterate thro and find the unique objects found
+        ## iterate thro and find the unique objects found 
         
         norad_array = []
         for i in range(entries):
             line2 = catalog[i]["TLE_LINE1"]
             norad = line2[2:7]
-            apogee = float(catalog[i]['APOGEE'])
-            perigee = float(catalog[i]["PERIGEE"])
+
+            if not args.APImethod2:
+                apogee = float(catalog[i]['APOGEE'])
+                perigee = float(catalog[i]["PERIGEE"])
             
             ## filter out nonLEO objects and duplicates
             if int(norad) in norad_array:
                 continue
 
-            elif perigee > 2000:
-                continue
+            elif not args.APImethod2:
+                if perigee > 2000:
+                    contiue
 
             else:
                 norad_array.append(int(norad))
@@ -92,15 +101,18 @@ def getTLE(t):
         for i in range(entries):
             line2 = catalog[i]["TLE_LINE1"]
             norad = line2[2:7]
-            apogee = float(catalog[i]['APOGEE'])
-            perigee = float(catalog[i]["PERIGEE"])
+
+            if not args.APImethod2:
+                apogee = float(catalog[i]['APOGEE'])
+                perigee = float(catalog[i]["PERIGEE"])
 
             ## filter out non leo objects and duplicates
             if int(norad) in norad_array:
                 continue
 
-            elif perigee > 2000:
-                continue
+            elif not args.APImethod2:
+                if perigee > 2000:
+                    contiue
 
             else:
                 norad_array.append(int(norad))
@@ -119,7 +131,10 @@ def getTLE(t):
             local_norad = int(line2[2:7])
             if local_norad != norad:
                 continue
-            epoch = datetime.strptime(catalog[i]['EPOCH'], '%Y-%m-%d %H:%M:%S')
+            if args.APImethod2:
+                epoch = datetime.strptime(catalog[i]['PUBLISH_EPOCH'], '%Y-%m-%d %H:%M:%S')    
+            else:
+                epoch = datetime.strptime(catalog[i]['EPOCH'], '%Y-%m-%d %H:%M:%S')
             diff = abs((startUTC - epoch).total_seconds())
             ref_time.append(diff)
             index_array.append(i)
@@ -296,7 +311,7 @@ def main(args):
         print("the selected timeSteps are " + str(timeSteps))
 
     ## get tle catalog
-    catalog, unique_norads = getTLE(timeSteps[0])
+    catalog, unique_norads = getTLE(timeSteps[0], args)
 
     if debug:
         print("obtained TLE for {0} objects".format(len(unique_norads)))
@@ -413,6 +428,7 @@ if __name__ == "__main__":
     parser.add_argument("--user", required=True, help="User name for space-track.org")
     parser.add_argument("--passwd", required=True, help="the password for space-track.org")
     parser.add_argument("--debug", default=False, type=bool, help="run the script in debug mode")
+    parser.add_argument("--APImethod2",default=False, type=bool, help="use tle_publish_query instead of tle_query. Default=False")
     args = parser.parse_args()
 
     global debug
