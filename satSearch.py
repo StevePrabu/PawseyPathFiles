@@ -12,7 +12,6 @@ from skyfield.api import Topos, load
 from skyfield.api import EarthSatellite
 import json
 import copy
-from tqdm import tqdm
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -31,8 +30,8 @@ def getTLE(t, args):
     entries     : number of objects in catalog
     """
     ## obtain tle for objects updated within one week
-    time1 = startUTC + timedelta(hours=-24*1)
-    time2 = startUTC + timedelta(hours=24*1) 
+    time1 = startUTC + timedelta(hours=-24*2)
+    time2 = startUTC + timedelta(hours=24*2) 
 
     day1, month1, year1 = str(time1.day).zfill(2), str(time1.month).zfill(2), str(time1.year)
     day2, month2, year2 = str(time2.day).zfill(2), str(time2.month).zfill(2), str(time2.year)
@@ -123,7 +122,7 @@ def getTLE(t, args):
     if debug:
         print("sorting catalog to have only the closest epoch TLE")
 
-    for norad in tqdm(norad_array):
+    for norad in norad_array:
         ref_time = []
         index_array = []
         for i in range(entries):
@@ -139,9 +138,9 @@ def getTLE(t, args):
             ref_time.append(diff)
             index_array.append(i)
         try:
-            min_index = int(np.where(ref_time == np.min(ref_time))[0])
+            min_index = int(np.where(np.abs(ref_time) == np.min(np.abs(ref_time)))[0])
         except:
-            min_index = int(np.where(ref_time == np.min(ref_time))[0][0])
+            min_index = int(np.where(np.abs(ref_time) == np.min(np.abs(ref_time)))[0][0])
     
         sorted_catalog.append(catalog[index_array[min_index]])
     
@@ -330,7 +329,7 @@ def main(args):
     if debug:
         print("starting search...")
 
-    for t in tqdm(timeSteps):
+    for t in timeSteps:
 
         hdu = fits.open("6Sigma1FloodfillSigmaRFIBinaryMap-t" + str(t).zfill(4) + ".fits")
         hduSeed = fits.open("6Sigma1FloodfillSigmaRFIBinaryMapSeed-t" + str(t).zfill(4) + ".fits")

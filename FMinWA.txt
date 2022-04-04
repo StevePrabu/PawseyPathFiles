@@ -1,0 +1,664 @@
+blah Albany 93.7 HPON M OD 5k -34 39 25 117 38 49 1171006
+blah Albany Town 104.9 HPON V OD 100 -35 1 4 117 52 15 1152693
+blah Broome 104.5 HPON M OD 250 -17 57 49 122 14 14 1152327
+blah Carnarvon 96.5 HPON M OD 250 -24 53 1 113 39 26 1152331
+blah Derby (WA) 101.1 HPON V OD 100 -17 19 42 123 39 4 1170733
+blah Esperance 89.5 HPON V OD 1200 -33 51 45 121 53 32 1152332
+blah Exmouth 95.7 HPON M OD 50 -21 55 46 114 7 31 1152334
+blah Halls Creek 101.3 HPON V OD 100 -18 13 22 127 40 23 1170731
+blah Hopetoun (WA) 97.3 HPON M OD 25 -33 55 59 120 8 1 1187446
+blah Kalbarri 105.3 HPON M OD 20 -27 42 20 114 10 30 1152318
+blah Kalgoorlie 104.3 HPON V OD 100 -30 44 37 121 28 39 1928531
+blah Kambalda 106.7 HPON M OD 100 -31 12 36 121 40 23 1928532
+blah Karratha 101.7 HPON M OD 1k -20 44 57 116 49 55 1152330
+blah Kununurra 105.7 HPON V OD 200 -15 46 22 128 44 29 1152333
+blah Laverton 104.5 HPON M OD 50 -28 37 9 122 23 56 1152306
+blah Leinster 99.7 HPON M OD 100 -27 54 52 120 42 18 1152315
+blah Leonora 98.5 HPON V OD 100 -28 52 55 121 20 3 1171017
+blah Meekatharra 104.7 HPON V OD 50 -26 35 31 118 29 49 1152321
+blah Merredin 95.9 HPON M OD 50 -31 28 38 118 16 42 1152322
+blah Mount Magnet 104.1 HPON V OD 50 -28 3 52 117 50 55 1152316
+blah Newman 96.9 HPON V OD 250 -23 21 46 119 43 34 1171005
+blah Onslow 101.9 HPON V OD 50 -21 38 45 115 6 54 1171013
+blah Paraburdoo 98.1 HPON V OD 50 -23 12 3 117 40 14 1171014
+blah Perth 90.5 HPON M OD 5k -32 0 15 116 4 56 10501322
+blah Perth City 103.3 HPON V OD 50 -31 52 54 115 51 17 1170751
+blah Perth City 104.9 HPON V OD 50 -31 55 22 115 51 30 1170836
+blah Port Hedland 92.5 HPON V OD 200 -20 18 29 118 36 44 1152329
+blah Ravensthorpe 93.1 HPON M OD 50 -33 35 11 120 2 42 1187443
+blah Roebourne 97.7 HPON M OD 50 -20 46 29 117 8 41 1171015
+blah Southern Cross 88.7 HPON M OD 50 -31 13 59 119 19 41 1152323
+blah Tom Price 104.1 HPON V OD 100 -22 43 12 117 45 41 1171016
+blah Wyndham 100.5 HPON M OD 1k -15 27 50 128 6 13 1152324
+6AAY Albany 95.3 Commercial V DA 50k -34 39 21 117 38 51 1152734
+6AAY Albany Town 106.5 Commercial V OD 100 -35 1 4 117 52 15 1152733
+6AAY Narrikup 104.1 Retransmission V OD 5 -34 50 8 117 47 29 11020848
+6ABCCT Leonora 93.7 Retransmission V OD 30 -28 52 55 121 20 3 1961744
+6ABCCT Newman Area C Mine 96.7 Retransmission V DA 20 -22 54 21 118 55 21 1974685
+6ABCCT Solomon Mining Area 1 105.9 Retransmission V OD 50 -22 8 56 117 50 59 1991586
+6ABCCT Solomon Mining Area 2 99.5 Retransmission V OD 50 -22 7 30 117 55 15 1991591
+6ABCFM Barrow Island 99.1 Retransmission V OD 20 -20 49 4 115 26 18 1917708
+6ABCFM Bunbury 93.3 National V OD 100k -33 23 49 115 54 55 1198493
+6ABCFM Cape Lambert 90.1 Retransmission V OD 28 -20 38 24 117 9 25 1193547
+6ABCFM Central Agricultural 98.9 National M OD 80k -31 59 4 117 11 23 1198499
+6ABCFM Esperance 104.7 National M OD 2k -33 52 30 121 53 41 1198506
+6ABCFM Geraldton 94.9 National M OD 10k -28 40 55 114 40 37 1198495
+6ABCFM Golden Grove Mine (WA) 106.3 Retransmission V OD 25 -28 47 5 116 56 15 1194370
+6ABCFM Green Head 106.1 Retransmission V OD 10 -30 4 26 114 58 6 1155799
+6ABCFM Jurien Bay 98.3 Retransmission V OD 100 -30 17 40 115 3 2 1159614
+6ABCFM Kalgoorlie 95.5 National M OD 6k -30 43 2 121 26 25 1150246
+6ABCFM Karara Mine 103.7 Retransmission V OD 30 -29 10 53 116 42 16 1928907
+6ABCFM Kununurra East 96.9 Retransmission M OD 250 -15 47 1 128 44 1 1147361
+6ABCFM Leinster 104.5 Retransmission V OD 100 -27 54 52 120 42 18 11233226
+6ABCFM Narrogin 92.5 National M OD 2k -32 52 57 117 11 48 1156903
+6ABCFM Newman Area C Mine 94.3 Retransmission V DA 20 -22 54 21 118 55 21 1974687
+6ABCFM Perth 97.7 National M OD 100k -32 0 39 116 5 4 1198496
+6ABCFM Port Hedland 97.3 Retransmission V OD 200 -20 22 2 118 33 33 1155551
+6ABCFM Southern Agricultural 94.5 National M OD 80k -34 39 21 117 38 51 1150245
+6ABCFM Winu Mine 105.5 Retransmission V OD 100 -20 43 57 121 45 34 10914014
+6ABCFM Yakabindie Mine 95.5 Retransmission H OD 100 -27 25 24 120 34 60 10954072
+6ABCGS Christmas Creek Mine 95.1 Retransmission V OD 300 -22 20 38 119 40 53 1974680
+6ABCGS Eliwana Mine 97.5 Retransmission V OD 100 -22 28 21 116 49 47 11435535
+6ABCGS Newman Area C Mine 92.7 Retransmission V DA 20 -22 54 21 118 55 21 1974683
+6ABCGS North Star Mine 100.3 Retransmission V OD 150 -21 15 28 119 2 2 11235569
+6ABCGS Roy Hill Mine 96.5 Retransmission V OD 50 -22 30 2 120 0 6 10961370
+6ABCRN Argyle 107.5 National M OD 50 -16 42 35 128 23 44 1198535
+6ABCRN Augusta 99.1 National M OD 40 -34 19 39 115 9 44 1198501
+6ABCRN Barrow Island 100.7 Retransmission V OD 20 -20 49 4 115 26 18 1917707
+6ABCRN Brockman 2 MIne - Pit 8 102.9 Retransmission V OD 200 -22 24 24 117 20 46 1989589
+6ABCRN Brockman 4 Mine 106.9 Retransmission V OD 150 -22 35 36 117 13 53 1919557
+6ABCRN Broome 107.7 National M OD 1600 -17 53 19 122 15 48 1198546
+6ABCRN Carnarvon 107.7 National M OD 280 -24 54 21 113 43 14 1198547
+6ABCRN Christmas Creek Mine 92.5 Retransmission V OD 300 -22 20 38 119 40 53 1991575
+6ABCRN Christmas Island Drumsite 97.3 Retransmission V OD 100 -10 25 55 105 40 13 10559585
+6ABCRN Christmas Island Phosphate Hill 94.1 Retransmission V OD 20 -10 25 58 105 41 2 1972423
+6ABCRN Christmas Island Rocky Point 90.1 Retransmission V OD 20 -10 25 0 105 40 34 1972427
+6ABCRN Cue 107.7 National M OD 50 -27 25 44 117 54 2 1198548
+6ABCRN Dampier 107.9 National M OD 50 -20 39 19 116 43 41 1198561
+6ABCRN Denham 107.5 National M OD 100 -25 55 27 113 32 38 1198536
+6ABCRN Derby (WA) 107.5 National M OD 40 -17 18 47 123 39 20 1198537
+6ABCRN Eneabba 107.7 National M OD 50 -29 49 5 115 16 39 1198549
+6ABCRN Esperance 106.3 National M OD 2k -33 52 30 121 53 41 1198523
+6ABCRN Exmouth 107.7 National M OD 50 -21 55 7 114 7 16 1198550
+6ABCRN Extension Hill Mine 104.1 Retransmission V OD 25 -29 34 19 117 8 43 1933175
+6ABCRN Fitzroy Crossing 107.7 National M OD 100 -18 11 23 125 33 56 1198551
+6ABCRN Geraldton 99.7 National M OD 10k -28 40 55 114 40 37 1198503
+6ABCRN Halls Creek 107.7 National M OD 100 -18 13 7 127 40 30 1198552
+6ABCRN Hope Downs 1 Mine 107.7 Retransmission V OD 150 -22 57 20 119 5 58 1950699
+6ABCRN Hope Downs 4 Mine 89.5 Retransmission V DA 150 -23 9 17 119 31 59 1942890
+6ABCRN Hope Downs Village 88.5 Retransmission V DA 150 -23 2 28 119 1 56 10620878
+6ABCRN Hopetoun (WA) 106.9 National M OD 25 -33 55 59 120 8 1 1152998
+6ABCRN Jimblebar Mine 95.7 Retransmission V OD 75 -23 22 46 120 3 9 1147153
+6ABCRN Jurien Bay 107.9 National M OD 200 -30 16 56 115 4 5 1198562
+6ABCRN Kalbarri 107.7 National M OD 50 -27 42 20 114 10 30 1198553
+6ABCRN Kalgoorlie 97.1 National M OD 6k -30 43 2 121 26 25 1150248
+6ABCRN Kambalda 93.9 National M OD 500 -31 12 36 121 40 23 1150244
+6ABCRN Karara Mine 105.3 Retransmission V OD 30 -29 10 53 116 42 16 1928908
+6ABCRN Karratha 100.9 National M OD 100 -20 44 8 116 51 33 1198504
+6ABCRN Koodaideri Mine 96.1 Retransmission V OD 20 -22 30 49 119 1 20 1932642
+6ABCRN Kununurra 107.3 National M OD 50 -15 45 47 128 44 26 1198527
+6ABCRN Laverton 107.7 National M OD 50 -28 37 41 122 23 57 1198555
+6ABCRN Leeman 107.3 National M OD 100 -29 57 43 114 58 46 1198528
+6ABCRN Leinster 107.7 Retransmission V OD 100 -27 54 52 120 42 18 11233183
+6ABCRN Leonora 107.3 National M OD 100 -28 53 9 121 21 54 1198529
+6ABCRN Marandoo 107.7 Retransmission V OD 100 -22 38 1 118 6 43 1159281
+6ABCRN Marandoo Mine Pit 106.9 Retransmission V OD 20 -22 39 35 118 9 55 1960169
+6ABCRN Marble Bar 107.5 National M OD 50 -21 10 16 119 44 56 1198538
+6ABCRN Meekatharra 107.9 National M OD 50 -26 35 49 118 29 52 1198563
+6ABCRN Menzies 107.7 National M OD 50 -29 41 38 121 1 48 1198556
+6ABCRN Merredin 107.3 National M OD 50 -31 28 54 118 16 49 1198530
+6ABCRN Mesa A Mine 98.5 Retransmission V OD 150 -21 39 57 115 54 48 1566635
+6ABCRN Mount Keith 99.3 Retransmission V OD 20 -27 12 56 120 33 24 1156862
+6ABCRN Mount Keith Mine Village 107.7 Retransmission V OD 20 -27 16 57 120 33 5 1565249
+6ABCRN Mount Magnet 107.3 National M OD 50 -28 3 23 117 50 33 1198531
+6ABCRN Mount Morgan Mine 102.9 Retransmission V OD 20 -28 48 54 122 12 23 11265874
+6ABCRN Mullewa 107.5 National M OD 100 -28 33 4 115 30 14 1152406
+6ABCRN Nammuldi Mine 89.7 Retransmission V OD 130 -22 24 39 117 24 59 1960715
+6ABCRN Nannup 98.9 National V OD 8 -33 59 8 115 46 9 1198500
+6ABCRN Narembeen 107.7 National M OD 50 -32 3 45 118 23 24 1152404
+6ABCRN Newman 93.7 National M OD 50 -23 20 57 119 43 30 1198494
+6ABCRN Norseman 107.3 National M OD 100 -32 8 33 121 43 39 1198532
+6ABCRN Northcliffe 107.5 Retransmission V OD 100 -34 37 56 116 7 23 1158606
+6ABCRN Onslow 107.5 National M OD 50 -21 38 42 115 6 56 1198539
+6ABCRN Pannawonica 107.7 National M OD 50 -21 38 60 116 19 31 1198557
+6ABCRN Paraburdoo 107.7 National M OD 50 -23 13 59 117 39 57 1198558
+6ABCRN Plutonic Gold Mine 107.5 Retransmission M OD 10 -25 18 17 119 26 34 1198019
+6ABCRN Port Hedland 95.7 National M OD 1600 -20 22 2 118 33 33 1150247
+6ABCRN Ravensthorpe 107.5 National M OD 50 -33 35 11 120 2 42 1198540
+6ABCRN Roebourne 107.5 National M OD 1300 -20 46 19 117 8 31 1198542
+6ABCRN Sally Malay Mine 107.7 Retransmission V OD 30 -17 20 54 128 3 57 1159348
+6ABCRN Salmon Gums 100.7 National M OD 1k -33 7 12 121 37 31 1150251
+6ABCRN Silvergrass Mine 93.5 Retransmission V DA 50 -22 19 20 117 18 25 10100205
+6ABCRN Solomon Frederick Mine 97.1 Retransmission V OD 25 -22 13 41 117 53 39 10805576
+6ABCRN Southern Agricultural 96.9 National M OD 80k -34 39 21 117 38 51 1153130
+6ABCRN Southern Cross 107.9 National M OD 1k -31 16 34 119 30 33 1198565
+6ABCRN Sunrise Dam 96.1 Retransmission V OD 100 -29 4 52 122 24 30 1991722
+6ABCRN Tom Price 107.3 National M OD 50 -22 41 57 117 47 32 1198533
+6ABCRN Walpole 107.7 Retransmission V OD 100 -34 57 39 116 44 22 1158609
+6ABCRN West Angelas 97.3 Retransmission V OD 250 -23 9 16 118 46 48 1567125
+6ABCRN West Angelas Mine Dep. B 94.7 Retransmission V OD 65 -23 6 49 118 46 55 1977621
+6ABCRN West Angelas Mine Dep. E 107.7 Retransmission V OD 20 -23 11 38 118 47 1 1947139
+6ABCRN West Angelas Mine Dep. F 90.3 Retransmission V OD 20 -23 11 29 118 51 6 10074178
+6ABCRN West Angelas Mine Dep.C 93.3 Retransmission V OD 20 -23 8 42 118 39 26 11152697
+6ABCRN West Angelas Mine Dep.D 104.9 Retransmission V OD 20 -23 10 41 118 38 47 11147305
+6ABCRN Western Turner Mine 93.7 Retransmission V OD 20 -22 40 0 117 34 52 1960177
+6ABCRN Wiluna 107.7 Retransmission M OD 100 -26 35 42 120 13 41 10582396
+6ABCRN Wongan Hills 107.9 Retransmission V OD 30 -30 53 26 116 43 29 1194414
+6ABCRN Wyndham 107.7 National M OD 50 -15 27 50 128 6 13 1198559
+6ABCRN Yalgoo 107.7 National M OD 50 -28 20 32 116 40 51 1198560
+6ABCRN Yandi Billiard Sth Mine 107.9 Retransmission V DA 20 -22 48 46 119 16 29 10091924
+6ABCRN Yandi Junction SW Mine 92.3 Retransmission V OD 20 -22 47 46 119 9 35 1950956
+6ABCRR Augusta 98.3 National M OD 40 -34 19 39 115 9 44 1198498
+6ABCRR Barrow Island 102.3 Retransmission V OD 20 -20 49 4 115 26 18 1917706
+6ABCRR Brockman 2 MIne - Pit 8 107.7 Retransmission V OD 200 -22 24 24 117 20 46 1159279
+6ABCRR Brockman 4 Mine 105.3 Retransmission V OD 150 -22 35 36 117 13 53 1919558
+6ABCRR Camballin 102.1 Retransmission V DA 1k -17 59 25 124 11 30 1980010
+6ABCRR Cape Lambert 88.5 Retransmission V OD 28 -20 38 24 117 9 25 1193546
+6ABCRR Cervantes 97.5 Retransmission V DA 20 -30 30 5 115 4 16 10598276
+6ABCRR Channar H Mine 93.7 Retransmission V OD 80 -23 18 17 117 51 20 11385622
+6ABCRR Channar Mine 92.5 Retransmission V OD 20 -23 17 31 117 47 10 1152249
+6ABCRR Christmas Island Drumsite 95.7 Retransmission V OD 100 -10 25 55 105 40 13 1972418
+6ABCRR Christmas Island Phosphate Hill 89.3 Retransmission V OD 20 -10 25 58 105 41 2 1972422
+6ABCRR Christmas Island Rocky Point 93.3 Retransmission V OD 20 -10 25 0 105 40 34 1972413
+6ABCRR Citic Pacific Mine 94.9 Retransmission V OD 70 -21 4 26 116 9 3 11262717
+6ABCRR Cloudbreak Mine Bigge Pit 93.5 Retransmission V OD 50 -22 17 57 119 13 27 11281010
+6ABCRR Cloudbreak Mine Central Hub 99.5 Retransmission V OD 100 -22 20 5 119 24 10 1991582
+6ABCRR Cloudbreak Mine Kangaroo RBS106.7 Retransmission V OD 100 -22 17 5 119 18 10 1991572
+6ABCRR Cocos Islands West Island 102.1 Retransmission V OD 100 -12 11 18 96 49 44 10559593
+6ABCRR Corunna Downs Mine 95.5 Retransmission V OD 50 -21 26 38 119 40 26 10967955
+6ABCRR Cue 106.1 National M OD 50 -27 25 44 117 54 2 1198515
+6ABCRR Dongara 106.7 Retransmission V DA 100 -29 16 16 114 55 54 10379784
+6ABCRR Eighty Mile Beach 88.9 Retransmission V OD 10 -19 45 16 120 40 22 1157845
+6ABCRR Eliwana Mine 95.9 Retransmission V OD 100 -22 28 21 116 49 47 11435526
+6ABCRR Fitzroy Crossing 106.1 National M OD 100 -18 11 23 125 33 56 1198516
+6ABCRR Garden Well Mine 104.9 Retransmission V OD 20 -27 53 34 122 21 54 1963936
+6ABCRR Halls Creek 106.1 National M OD 100 -18 13 7 127 40 30 1198517
+6ABCRR Hope Downs 1 Mine 106.1 Retransmission V OD 150 -22 57 20 119 5 58 1950700
+6ABCRR Hope Downs 4 Mine 91.1 Retransmission V DA 150 -23 9 17 119 31 59 1942891
+6ABCRR Hope Downs Village 94.9 Retransmission V DA 150 -23 2 28 119 1 56 1180685
+6ABCRR Hopetoun (WA) 105.3 National M OD 25 -33 55 59 120 8 1 1152997
+6ABCRR Jack Hills Mine 91.9 Retransmission V OD 30 -26 1 17 117 16 7 1184860
+6ABCRR Jundee Mine 102.5 Retransmission V OD 25 -26 23 41 120 38 15 1152103
+6ABCRR Jurien Bay 100.7 Retransmission V DA 100 -30 17 40 115 3 2 10598282
+6ABCRR Kalbarri 106.1 National M OD 50 -27 42 20 114 10 30 1198521
+6ABCRR Karara Mine 106.9 Retransmission V OD 30 -29 10 53 116 42 16 1928909
+6ABCRR Koodaideri Mine 94.5 Retransmission V OD 20 -22 30 49 119 1 20 1932643
+6ABCRR Lagrange 102.1 Retransmission V OD 2 -18 41 6 121 46 44 1152373
+6ABCRR Laverton 106.1 National M OD 50 -28 37 41 122 23 57 1198519
+6ABCRR Leinster 106.1 Retransmission V OD 100 -27 54 52 120 42 18 11233185
+6ABCRR Leonora 105.7 National M OD 100 -28 53 9 121 21 54 1198507
+6ABCRR Marandoo 106.1 Retransmission V OD 100 -22 38 1 118 6 43 1153827
+6ABCRR Marandoo Mine Pit 105.3 Retransmission V OD 20 -22 39 35 118 9 55 1960170
+6ABCRR Marble Bar 105.9 National M OD 50 -21 10 16 119 44 56 1198512
+6ABCRR Meekatharra 106.3 National M OD 50 -26 35 49 118 29 52 1198524
+6ABCRR Menzies 106.1 National M OD 50 -29 41 38 121 1 48 1198520
+6ABCRR Mesa A Mine 103.3 Retransmission V OD 150 -21 39 57 115 54 48 1566636
+6ABCRR Mesa J Mine 92.5 Retransmission V OD 100 -21 44 41 116 15 10 1156421
+6ABCRR Mount Keith Mine Village 105.3 Retransmission V OD 20 -27 16 57 120 33 5 1565248
+6ABCRR Mount Magnet 105.7 National M OD 50 -28 3 23 117 50 33 1198508
+6ABCRR Mount Webber Mine 93.7 Retransmission V OD 30 -21 33 7 119 17 1 1991719
+6ABCRR Mt Whaleback Mine 102.5 Retransmission V OD 20 -23 21 53 119 40 57 1973373
+6ABCRR Murrin Murrin Open Cut Mine 105.3 Retransmission M OD 300 -28 47 30 121 53 42 1159201
+6ABCRR Nammuldi Mine 91.3 Retransmission V OD 130 -22 24 39 117 24 59 1960716
+6ABCRR Nannup 98.1 National V OD 8 -33 59 8 115 46 9 1198497
+6ABCRR Newman Area C Mine 99.9 Retransmission V DA 20 -22 54 21 118 55 21 1974688
+6ABCRR Norseman 105.7 National M OD 100 -32 8 33 121 43 39 1198509
+6ABCRR Northcliffe 105.9 Retransmission V OD 100 -34 37 56 116 7 23 1158607
+6ABCRR Paraburdoo 106.1 Retransmission V DA 150 -23 13 59 117 39 57 1155888
+6ABCRR Ravensthorpe 105.9 National M OD 50 -33 35 11 120 2 42 1198513
+6ABCRR Roy Hill Mine 98.1 Retransmission V OD 50 -22 30 2 120 0 6 1985459
+6ABCRR Sandstone 106.3 Retransmission V OD 40 -27 59 25 119 17 53 1153850
+6ABCRR Silvergrass Mine 95.1 Retransmission V DA 50 -22 19 20 117 18 25 10100232
+6ABCRR Southern Cross 106.3 National M OD 1k -31 16 34 119 30 33 1198525
+6ABCRR Telfer 100.5 Retransmission V OD 160 -21 43 17 122 13 22 1158783
+6ABCRR Telfer Mine West Dome 94.9 Retransmission V OD 50 -21 42 57 122 10 45 1961647
+6ABCRR Ti Tree (WA) 106.9 Retransmission V OD 20 -21 49 54 117 36 21 1159106
+6ABCRR Tom Price 102.5 Retransmission V OD 70 -22 43 12 117 45 41 1147228
+6ABCRR Tom Price Mine 100.1 Retransmission V OD 20 -22 45 50 117 45 8 1159282
+6ABCRR Tropicana Gold Mine 106.1 Retransmission V OD 90 -29 14 31 124 33 6 1976818
+6ABCRR Useless Loop 100.3 Retransmission M OD 32 -26 7 37 113 25 3 1153866
+6ABCRR Walpole 106.1 Retransmission V OD 100 -34 57 39 116 44 22 1158611
+6ABCRR Warburton (WA) 106.1 Retransmission V OD 30 -26 8 3 126 34 48 1153868
+6ABCRR West Angelas 99.7 Retransmission V OD 250 -23 9 16 118 46 48 1157013
+6ABCRR West Angelas Mine Dep. B 93.1 Retransmission V OD 65 -23 6 49 118 46 55 1977620
+6ABCRR West Angelas Mine Dep. E 106.1 Retransmission V OD 20 -23 11 38 118 47 1 1947138
+6ABCRR West Angelas Mine Dep. F 88.7 Retransmission V OD 20 -23 11 29 118 51 6 10074176
+6ABCRR West Angelas Mine Dep.C 94.1 Retransmission V OD 20 -23 8 42 118 39 26 11152709
+6ABCRR West Angelas Mine Dep.D 105.7 Retransmission V OD 20 -23 10 41 118 38 47 11147307
+6ABCRR Western Turner Mine 95.3 Retransmission V OD 20 -22 40 0 117 34 52 1960178
+6ABCRR Western Turner Mine 2 97.9 Retransmission V OD 15 -22 41 21 117 28 54 1990153
+6ABCRR Wiluna 106.1 Retransmission M OD 100 -26 35 42 120 13 41 10582393
+6ABCRR Wodgina 106.9 Retransmission V OD 30 -21 11 9 118 40 35 1158734
+6ABCRR Yalgoo 106.1 National M OD 50 -28 20 32 116 40 51 1198522
+6ABCRR Yandi BHP Mine Site 1 96.3 Retransmission V OD 50 -22 42 45 119 5 45 1975408
+6ABCRR Yandi BHP Mine Site 2 89.9 Retransmission V OD 50 -22 43 51 119 0 58 1975412
+6ABCRR Yandi Billiard Sth Mine 103.1 Retransmission V DA 20 -22 48 46 119 16 29 10091917
+6ABCRR Yandi Junction SW Mine 95.5 Retransmission V OD 20 -22 47 46 119 9 35 1950958
+6ABCRR Yandicoogina 102.5 Retransmission V OD 20 -22 46 12 119 13 54 1154963
+6ABCRR Yandicoogina Village 97.7 Retransmission V OD 50 -22 48 4 119 14 50 1183629
+6ACR Balgo 106.1 Community V DA 20 -20 8 31 127 58 58 10140632
+6ACR Beagle Bay 106.1 Community M OD 20 -16 59 10 122 39 51 1171396
+6ACR Jigalong 106.1 Community M OD 20 -23 21 32 120 46 49 1154028
+6ACR Kalumburu 106.1 Community M OD 20 -14 17 44 126 38 33 1172008
+6ACR Kiwirrkurra 106.1 Community M OD 20 -22 49 5 127 45 50 1140028
+6ACR Lagrange 106.1 Community M OD 20 -18 41 6 121 46 44 1154033
+6ACR Roy Hill Mine 101.3 Retransmission V OD 50 -22 30 2 120 0 6 1985066
+6ACR Tjukurla 106.1 Community M OD 20 -24 20 53 128 43 5 1154053
+6ACR Warmun 106.1 Community M OD 20 -17 1 58 128 12 53 1154056
+6ACR Wingellina 106.1 Community M OD 20 -26 4 0 128 55 50 1154059
+6AM Wongan Hills 103.1 Retransmission V OD 30 -30 53 26 116 43 29 1194411
+6AUG Augusta 97.1 Community V OD 200 -34 18 51 115 9 22 1171969
+6BAY Dongara 105.1 Retransmission V DA 100 -29 16 16 114 55 54 10379782
+6BAY Geraldton 98.1 Commercial M DA 30k -28 41 2 114 40 34 1384927
+6BET Bridgetown 100.5 Commercial V OD 5k -34 3 18 116 10 37 1156716
+6BET Nannup 102.1 Retransmission V OD 10 -33 58 54 115 45 38 10238715
+6BET Pemberton 97.3 Retransmission V OD 50 -34 27 59 116 0 41 1970064
+6BUN Bunbury 95.7 Commercial V DA 55k -33 23 49 115 54 55 10295824
+6BUN Bunbury 95.7 Commercial V OD 2k -33 20 23 115 45 13 10295824
+6BUN Collie 96.7 Commercial V DA 80 -33 22 10 116 11 37 10260948
+6BUN Margaret River 100.3 Commercial V OD 25 -33 57 3 115 4 37 1159017
+6BY Nannup 101.3 Retransmission V OD 10 -33 58 54 115 45 38 10238697
+6CAR Carnarvon 99.7 Commercial M OD 5k -24 54 41 113 43 16 1191488
+6CAR Coral Bay 99.7 Retransmission V OD 20 -23 8 35 113 46 4 10655782
+6CAR Denham 105.3 Commercial V OD 100 -25 55 27 113 32 38 10407998
+6CAR Onslow 100.3 Commercial M OD 100 -21 38 45 115 6 54 10408066
+6CCR Fremantle 107.9 Community V DA 1k -32 1 60 115 46 14 1385206
+6CRA Albany 100.9 Community V DA 8k -35 1 29 117 53 41 1153509
+6CST Mandurah 97.3 Commercial V DA 5k -32 39 1 115 59 23 1151269
+6DBY Derby (WA) 97.9 Community V OD 2k -17 18 50 123 38 30 1172179
+6EBA Perth 95.3 Community M DA 16k -32 0 30 116 5 3 1385207
+6ESP Esperance 103.9 Community V DA 1400 -33 52 31 121 53 40 1170082
+6FMS Argyle 102.7 Commercial M OD 80 -16 42 35 128 23 44 1384897
+6FMS Badgingarra 100.3 Retransmission V DA 10 -30 23 28 115 29 57 10100236
+6FMS Barrow Island 103.9 Retransmission V OD 20 -20 49 4 115 26 18 1917705
+6FMS Bremer Bay 103.5 Retransmission M OD 20 -34 26 29 119 22 20 1158988
+6FMS Brockman 2 MIne - Pit 8 101.3 Retransmission V OD 200 -22 24 24 117 20 46 1158593
+6FMS Brockman 4 Mine 102.1 Retransmission V OD 150 -22 35 36 117 13 53 1919559
+6FMS Cervantes 99.9 Retransmission V OD 20 -30 30 5 115 4 16 1157746
+6FMS Channar H Mine 88.9 Retransmission V OD 80 -23 18 17 117 51 20 11384284
+6FMS Channar Mine 105.7 Retransmission V OD 20 -23 17 31 117 47 10 1152248
+6FMS Christmas Creek Mine 90.9 Retransmission V OD 300 -22 20 38 119 40 53 1991574
+6FMS Christmas Island Drumsite 98.9 Retransmission V OD 100 -10 25 55 105 40 13 10559587
+6FMS Christmas Island Phosphate Hill 90.9 Retransmission V OD 20 -10 25 58 105 41 2 1972424
+6FMS Citic Pacific Mine 97.3 Retransmission V OD 70 -21 4 26 116 9 3 11263692
+6FMS Cloudbreak Mine Bigge Pit 99.9 Retransmission V OD 50 -22 17 57 119 13 27 11281012
+6FMS Cloudbreak Mine Central Hub 97.9 Retransmission V OD 100 -22 20 5 119 24 10 1991583
+6FMS Cloudbreak Mine Kangaroo RBS105.1 Retransmission V OD 100 -22 17 5 119 18 10 1991573
+6FMS Cocos Islands West Island 100.5 Retransmission V OD 100 -12 11 18 96 49 44 1155930
+6FMS Coorow 101.9 Commercial V DA 20 -29 52 53 116 1 29 10262009
+6FMS Cue 102.9 Commercial M OD 20 -27 25 44 117 54 2 1384909
+6FMS Dalwallinu 106.1 Commercial V OD 250 -30 16 38 116 40 9 1151576
+6FMS Darlot 101.9 Commercial V OD 20 -27 53 55 121 17 25 1384903
+6FMS Derby (WA) 104.3 Commercial M OD 100 -17 18 47 123 39 20 1384888
+6FMS Eliwana Mine 89.5 Retransmission V OD 100 -22 28 21 116 49 47 11435548
+6FMS Eneabba 102.1 Commercial V OD 60 -29 49 56 115 20 6 1384894
+6FMS Exmouth 102.9 Commercial M DA 50 -21 56 42 114 7 44 10299300
+6FMS Extension Hill Mine 102.5 Retransmission V OD 25 -29 34 19 117 8 43 1933176
+6FMS Fitzroy Crossing 102.9 Retransmission V OD 50 -18 11 25 125 34 5 1151347
+6FMS Fortnum Mine 102.1 Commercial V OD 30 -25 19 5 118 20 33 1384906
+6FMS Garden Well Mine 103.3 Retransmission V OD 20 -27 53 34 122 21 54 1963937
+6FMS Golden Grove 107.9 Commercial V OD 10 -28 47 5 116 56 15 1384839
+6FMS Granny Smith Goldmine 89.7 Retransmission V DA 100 -28 48 44 122 24 21 10287234
+6FMS Green Head 102.1 Retransmission V OD 15 -30 4 26 114 58 6 1151844
+6FMS Gruyere Gold Mine 104.1 Retransmission V DA 100 -28 2 43 123 44 31 10334018
+6FMS Halls Creek 102.9 Commercial M OD 20 -18 13 7 127 40 30 1384908
+6FMS Hope Downs 1 Mine 102.9 Retransmission V OD 150 -22 57 20 119 5 58 1950701
+6FMS Hope Downs 4 Mine 95.9 Retransmission V DA 150 -23 9 17 119 31 59 1942887
+6FMS Hope Downs Village 91.7 Retransmission V DA 150 -23 2 28 119 1 56 1180682
+6FMS Jack Hills Mine 94.3 Retransmission V OD 30 -26 1 17 117 16 7 1184858
+6FMS Jimblebar Mine 90.9 Retransmission V OD 75 -23 22 46 120 3 9 1147154
+6FMS Jundee Mine 105.7 Retransmission V OD 25 -26 23 41 120 38 15 1151421
+6FMS Jurien Bay 103.1 Commercial V DA 150 -30 17 40 115 3 2 1384896
+6FMS Kalbarri 102.9 Commercial M OD 50 -27 42 20 114 10 30 1384887
+6FMS Karara Mine 102.1 Retransmission V OD 30 -29 10 53 116 42 16 1928905
+6FMS Koodaideri Mine 91.3 Retransmission V OD 20 -22 30 49 119 1 20 1932640
+6FMS Kununurra 104.1 Commercial M OD 100 -15 45 47 128 44 26 1384891
+6FMS Lancelin 102.3 Commercial V OD 150 -30 59 6 115 23 8 1154860
+6FMS Laverton 102.1 Commercial V OD 40 -28 37 9 122 23 56 1384898
+6FMS Leeman 102.5 Commercial V OD 30 -29 57 6 114 58 36 1384911
+6FMS Leinster 102.9 Commercial V OD 24 -27 54 52 120 42 18 1384905
+6FMS Leonora 101.7 Commercial M OD 40 -28 52 55 121 20 3 1384895
+6FMS Marandoo 102.9 Retransmission V OD 100 -22 38 1 118 6 43 1158644
+6FMS Marandoo Mine Pit 102.1 Retransmission V OD 20 -22 39 35 118 9 55 1960171
+6FMS Meekatharra 103.1 Commercial M OD 50 -26 35 49 118 29 52 10103855
+6FMS Mesa A Mine 96.9 Retransmission V OD 150 -21 39 57 115 54 48 1566633
+6FMS Mesa J Mine 94.1 Retransmission V OD 100 -21 44 41 116 15 10 1141375
+6FMS Moora 90.9 Commercial V DA 600 -30 38 6 116 9 35 10263091
+6FMS Morawa 103.1 Commercial V DA 100 -29 19 7 115 52 56 10263093
+6FMS Mount Keith 97.7 Retransmission V OD 20 -27 12 56 120 33 24 1156864
+6FMS Mount Keith Mine Village 102.9 Retransmission V OD 20 -27 16 57 120 33 5 1565247
+6FMS Mount Magnet 102.5 Commercial M OD 10 -28 3 23 117 50 33 1384912
+6FMS Mount Morgan Mine 101.3 Retransmission V OD 20 -28 48 54 122 12 23 11265872
+6FMS Mount Webber Mine 92.1 Retransmission V OD 30 -21 33 7 119 17 1 1991718
+6FMS Mt Marion Mine 102.9 Retransmission V OD 25 -31 4 47 121 26 14 10652679
+6FMS Mt Whaleback Mine 104.1 Retransmission V OD 20 -23 21 53 119 40 57 1973374
+6FMS Murrin Murrin 94.1 Retransmission M OD 20 -28 42 34 121 52 19 1152885
+6FMS Nammuldi Mine 94.5 Retransmission V OD 130 -22 24 39 117 24 59 1960718
+6FMS Newman 88.9 Commercial M OD 100 -23 20 57 119 43 30 1384889
+6FMS Newman Area C Mine 106.5 Retransmission V DA 20 -22 54 21 118 55 21 1974689
+6FMS North Star Mine 101.9 Retransmission V OD 150 -21 15 28 119 2 2 11235589
+6FMS Northcliffe 102.7 Retransmission V OD 100 -34 37 56 116 7 23 1158608
+6FMS Nullagine Gold Mine 105.5 Retransmission V OD 100 -21 48 33 120 25 5 10458179
+6FMS Pannawonica 102.9 Commercial M OD 50 -21 38 60 116 19 31 1384902
+6FMS Paraburdoo 101.3 Retransmission V DA 150 -23 13 59 117 39 57 1158596
+6FMS Perenjori 100.1 Commercial V OD 600 -29 34 50 116 32 28 1151051
+6FMS Roy Hill Mine 102.9 Retransmission V OD 50 -22 30 2 120 0 6 1985065
+6FMS Sally Malay Mine 105.3 Retransmission V OD 30 -17 20 54 128 3 57 1159349
+6FMS Sandstone 104.7 Retransmission M OD 40 -27 59 25 119 17 53 1158096
+6FMS Silvergrass Mine 88.7 Retransmission V DA 50 -22 19 20 117 18 25 10100207
+6FMS Solomon Mining Area 1 102.7 Retransmission V OD 50 -22 8 56 117 50 59 1991589
+6FMS Solomon Mining Area 2 96.3 Retransmission V OD 50 -22 7 30 117 55 15 1991593
+6FMS Sunrise Dam 97.7 Retransmission V OD 100 -29 4 52 122 24 30 1991723
+6FMS Telfer 106.9 Commercial V DA 160 -21 43 17 122 13 22 1384886
+6FMS Telfer Mine West Dome 93.3 Retransmission V OD 50 -21 42 57 122 10 45 1961646
+6FMS Three Springs 101.1 Retransmission V OD 500 -29 32 37 115 40 27 1150330
+6FMS Thunderbox Mine 91.5 Retransmission V OD 25 -28 10 52 121 0 1 1991721
+6FMS Ti Tree (WA) 103.7 Retransmission V OD 20 -21 49 54 117 36 21 1159107
+6FMS Tjirrkarli 102.9 Commercial V OD 1 -26 0 3 125 28 24 1384900
+6FMS Tom Price 105.7 Retransmission V OD 70 -22 43 12 117 45 41 1158598
+6FMS Tom Price Mine 103.3 Retransmission V OD 20 -22 45 50 117 45 8 1159284
+6FMS Tropicana Gold Mine 107.7 Retransmission V OD 90 -29 14 31 124 33 6 1976817
+6FMS Walpole 102.9 Retransmission V OD 100 -34 57 39 116 44 22 1158610
+6FMS Warburton (WA) 102.1 Commercial V OD 30 -26 8 3 126 34 48 1384904
+6FMS West Angelas 95.7 Retransmission V OD 250 -23 9 16 118 46 48 1157012
+6FMS West Angelas Mine Dep. B 88.3 Retransmission V OD 65 -23 6 49 118 46 55 1977617
+6FMS West Angelas Mine Dep. E 102.9 Retransmission V OD 20 -23 11 38 118 47 1 1947141
+6FMS West Angelas Mine Dep. F 91.9 Retransmission V OD 20 -23 11 29 118 51 6 10074179
+6FMS West Angelas Mine Dep.C 91.7 Retransmission V OD 20 -23 8 42 118 39 26 11152678
+6FMS West Angelas Mine Dep.D 103.3 Retransmission V OD 20 -23 10 41 118 38 47 11147301
+6FMS Western Turner Mine 88.9 Retransmission V OD 20 -22 40 0 117 34 52 1960174
+6FMS Western Turner Mine 2 96.3 Retransmission V OD 15 -22 41 21 117 28 54 1990154
+6FMS Westonia 97.9 Retransmission V DA 100 -31 18 8 118 41 51 1991669
+6FMS Wiluna 104.5 Retransmission M OD 100 -26 35 42 120 13 41 10582251
+6FMS Wyndham 102.9 Retransmission M OD 200 -15 27 50 128 6 13 1152913
+6FMS Yalgoo 104.5 Retransmission M OD 50 -28 20 32 116 40 44 1153753
+6FMS Yandi BHP Mine Site 1 98.7 Retransmission V OD 50 -22 42 45 119 5 45 1975407
+6FMS Yandi BHP Mine Site 2 94.7 Retransmission V OD 50 -22 43 51 119 0 58 1975411
+6FMS Yandi Billiard Sth Mine 106.3 Retransmission V DA 20 -22 48 46 119 16 29 10091925
+6FMS Yandi Junction SW Mine 89.1 Retransmission V OD 20 -22 47 46 119 9 35 1950953
+6FMS Yandicoogina 105.7 Retransmission V OD 20 -22 46 12 119 13 54 1154966
+6FMS Yandicoogina Village 99.3 Retransmission V OD 50 -22 48 4 119 14 50 1183630
+6FMS Yiyili 102.9 Commercial V OD 20 -18 42 59 126 45 20 1384916
+6GF Kalgoorlie Super Pit 94.3 Retransmission V OD 10 -30 46 52 121 30 46 1901208
+6GGG Geraldton 96.5 Commercial M DA 30k -28 41 2 114 40 34 1384925
+6GME Broome 99.7 Community V OD 2k -17 57 51 122 13 17 1153293
+6HED Broome 101.3 Commercial V OD 2k -17 57 51 122 13 17 1991730
+6HED Port Hedland 91.7 Commercial M DA 5k -20 22 34 118 34 39 1153252
+6HFM Armadale 107.3 Community V DA 200 -32 5 33 116 2 5 10125348
+6HRV Harvey 96.5 Community V DA 630 -33 2 58 115 56 5 1172353
+6IX Rockingham 105.7 Commercial V DA 500 -32 15 32 115 45 6 1960432
+6IX Wanneroo 105.7 Commercial V DA 4k -31 45 19 115 49 10 1186424
+6JJJ Barrow Island 105.5 Retransmission V OD 20 -20 49 4 115 26 18 1917704
+6JJJ Bremer Bay 105.1 Retransmission M OD 25 -34 26 29 119 22 20 1159655
+6JJJ Brockman 2 MIne - Pit 8 104.5 Retransmission V OD 200 -22 24 24 117 20 46 1158592
+6JJJ Brockman 4 Mine 103.7 Retransmission V OD 150 -22 35 36 117 13 53 1919560
+6JJJ Broome 94.9 Retransmission V OD 100 -17 58 3 122 13 12 1159521
+6JJJ Bunbury 94.1 National V OD 100k -33 23 49 115 54 55 1153101
+6JJJ Carnarvon 101.3 Retransmission V DA 100 -24 52 7 113 42 17 1991552
+6JJJ Central Agricultural 98.1 National M OD 80k -31 59 4 117 11 23 1153435
+6JJJ Channar H Mine 90.5 Retransmission V OD 80 -23 18 17 117 51 20 11385614
+6JJJ Channar Mine 100.9 Retransmission V OD 20 -23 17 31 117 47 10 1158595
+6JJJ Christmas Creek Mine 94.1 Retransmission V OD 300 -22 20 38 119 40 53 1991576
+6JJJ Christmas Island Drumsite 100.5 Retransmission V OD 100 -10 25 55 105 40 13 10559589
+6JJJ Christmas Island Phosphate Hill 103.7 Retransmission V OD 20 -10 25 58 105 41 2 1972425
+6JJJ Christmas Island Rocky Point 91.7 Retransmission V OD 20 -10 25 0 105 40 34 1972414
+6JJJ Citic Pacific Mine 102.1 Retransmission V OD 70 -21 4 26 116 9 3 11262728
+6JJJ Cloudbreak Mine Bigge Pit 90.3 Retransmission V OD 50 -22 17 57 119 13 27 11281008
+6JJJ Cloudbreak Mine Central Hub101.9 Retransmission V OD 100 -22 20 5 119 24 10 1991579
+6JJJ Cloudbreak Mine Kangaroo RBS103.5 Retransmission V OD 100 -22 17 5 119 18 10 1991571
+6JJJ Cocos Islands West Island 98.9 Retransmission V OD 100 -12 11 18 96 49 44 1972415
+6JJJ Corunna Downs Mine 97.9 Retransmission V OD 50 -21 26 38 119 40 26 10968021
+6JJJ Dampier 99.3 Retransmission M DA 50 -20 39 19 116 43 41 10289906
+6JJJ Denham 103.7 Retransmission M OD 100 -25 55 10 113 32 3 1155764
+6JJJ Derby (WA) 105.9 Retransmission V OD 200 -17 18 8 123 37 38 1145470
+6JJJ Eliwana Mine 92.7 Retransmission V OD 100 -22 28 21 116 49 47 11435354
+6JJJ Esperance 105.5 Retransmission M OD 500 -33 52 30 121 53 41 1154125
+6JJJ Exmouth 98.1 Retransmission V OD 100 -21 56 39 114 7 51 1152836
+6JJJ Gairdner 104.9 Retransmission M OD 100 -34 14 3 118 59 20 1159654
+6JJJ Garden Well Mine 106.5 Retransmission V OD 20 -27 53 34 122 21 54 1963935
+6JJJ Geraldton 98.9 National M OD 10k -28 40 55 114 40 37 1151762
+6JJJ Golden Grove Mine (WA) 103.1 Retransmission V OD 25 -28 47 5 116 56 15 1926776
+6JJJ Granny Smith Goldmine 92.9 Retransmission V DA 100 -28 48 44 122 24 21 10287348
+6JJJ Green Head 105.3 Retransmission V OD 10 -30 4 26 114 58 6 1155798
+6JJJ Gruyere Gold Mine 105.7 Retransmission V DA 100 -28 2 43 123 44 31 10334013
+6JJJ Hope Downs 1 Mine 104.5 Retransmission V OD 150 -22 57 20 119 5 58 1950702
+6JJJ Hope Downs 4 Mine 94.3 Retransmission V DA 150 -23 9 17 119 31 59 1942888
+6JJJ Hope Downs Village 93.3 Retransmission V DA 150 -23 2 28 119 1 56 1180684
+6JJJ Hopetoun (WA) 94.1 Retransmission M OD 300 -33 55 59 120 8 1 1955599
+6JJJ Jack Hills Mine 96.7 Retransmission V OD 30 -26 1 17 117 16 7 1184857
+6JJJ Jimblebar Mine 94.1 Retransmission V OD 75 -23 22 46 120 3 9 1991527
+6JJJ Jundee Mine 107.3 Retransmission V OD 25 -26 23 41 120 38 15 1916253
+6JJJ Jurien Bay 96.7 Retransmission V OD 100 -30 17 40 115 3 2 1159616
+6JJJ Kalgoorlie 98.7 National M OD 6k -30 43 2 121 26 25 1150250
+6JJJ Kalgoorlie Super Pit 93.5 Retransmission V OD 10 -30 46 52 121 30 46 1901207
+6JJJ Karara Mine 100.5 Retransmission V OD 30 -29 10 53 116 42 16 1928906
+6JJJ Karratha 103.3 Retransmission M DA 50 -20 44 8 116 51 33 10300639
+6JJJ Koodaideri Mine 89.7 Retransmission V OD 20 -22 30 49 119 1 20 1932641
+6JJJ Kununurra East 100.1 Retransmission V OD 250 -15 47 1 128 44 1 1156064
+6JJJ Laverton 98.9 Retransmission V OD 20 -28 37 26 122 24 4 1157161
+6JJJ Leonora 96.9 Retransmission V OD 30 -28 52 55 121 20 3 1156130
+6JJJ Marandoo 104.5 Retransmission V OD 100 -22 38 1 118 6 43 1158594
+6JJJ Marandoo Mine Pit 103.7 Retransmission V OD 20 -22 39 35 118 9 55 1960172
+6JJJ Marvel Loch 103.7 Retransmission V OD 20 -31 28 10 119 29 27 1158902
+6JJJ Mesa A Mine 100.1 Retransmission V OD 150 -21 39 57 115 54 48 1566634
+6JJJ Mesa J Mine 99.3 Retransmission V OD 100 -21 44 41 116 15 10 1156422
+6JJJ Moora 105.1 Retransmission V OD 30 -30 38 44 116 0 29 1567354
+6JJJ Morawa 106.3 Retransmission M OD 500 -29 19 7 115 52 56 1142574
+6JJJ Mount Keith 98.5 Retransmission V OD 20 -27 12 56 120 33 24 1156863
+6JJJ Mount Keith Mine Village 100.9 Retransmission V OD 20 -27 16 57 120 33 5 1156703
+6JJJ Mount Morgan Mine 99.7 Retransmission V OD 20 -28 48 54 122 12 23 11265870
+6JJJ Mount Webber Mine 90.5 Retransmission V OD 30 -21 33 7 119 17 1 1991717
+6JJJ Nammuldi Mine 92.9 Retransmission V OD 130 -22 24 39 117 24 59 1960717
+6JJJ Newman Area C Mine 101.7 Retransmission V DA 20 -22 54 21 118 55 21 1974681
+6JJJ North Star Mine 98.7 Retransmission V OD 150 -21 15 28 119 2 2 11235567
+6JJJ Onslow 105.1 Retransmission V OD 50 -21 38 45 115 6 54 1143466
+6JJJ Pannawonica 106.1 Retransmission M OD 50 -21 38 60 116 19 31 1155796
+6JJJ Paraburdoo 104.5 Retransmission V DA 150 -23 13 59 117 39 57 1158597
+6JJJ Perth 99.3 National M OD 100k -32 0 39 116 5 4 1198502
+6JJJ Port Hedland 98.9 Retransmission V OD 200 -20 22 2 118 33 33 1155550
+6JJJ Ravensthorpe 90.7 Retransmission M OD 300 -33 34 52 120 2 48 1955601
+6JJJ Roy Hill Mine 99.7 Retransmission V OD 50 -22 30 2 120 0 6 1985457
+6JJJ Silvergrass Mine 91.9 Retransmission V DA 50 -22 19 20 117 18 25 10100231
+6JJJ Solomon Mining Area 1 107.5 Retransmission V OD 50 -22 8 56 117 50 59 1991587
+6JJJ Solomon Mining Area 2 101.1 Retransmission V OD 50 -22 7 30 117 55 15 1991590
+6JJJ Southern Agricultural 92.9 National M OD 80k -34 39 21 117 38 51 1153129
+6JJJ Southern Cross 103.9 Retransmission M OD 100 -31 14 3 119 19 27 1158357
+6JJJ Telfer 98.9 Retransmission V OD 160 -21 43 17 122 13 22 1928029
+6JJJ Telfer Mine West Dome 91.7 Retransmission V OD 50 -21 42 57 122 10 45 1961645
+6JJJ Thunderbox Mine 93.1 Retransmission V OD 25 -28 10 52 121 0 1 1991720
+6JJJ Ti Tree (WA) 105.3 Retransmission V OD 20 -21 49 54 117 36 21 1159108
+6JJJ Tom Price 100.9 Retransmission M OD 70 -22 43 12 117 45 41 1158599
+6JJJ Tom Price Mine 98.5 Retransmission V OD 20 -22 45 50 117 45 8 1159283
+6JJJ Tropicana Gold Mine 102.9 Retransmission V OD 90 -29 14 31 124 33 6 1976820
+6JJJ Useless Loop 102.7 Retransmission V OD 20 -26 7 37 113 25 3 1153608
+6JJJ Warmun 106.9 Retransmission V OD 100 -17 1 58 128 12 53 1157996
+6JJJ West Angelas 98.9 Retransmission V OD 250 -23 9 16 118 46 48 1567126
+6JJJ West Angelas Mine Dep. B 89.9 Retransmission V OD 65 -23 6 49 118 46 55 1977618
+6JJJ West Angelas Mine Dep. E 104.5 Retransmission V OD 20 -23 11 38 118 47 1 1947142
+6JJJ West Angelas Mine Dep. F 95.1 Retransmission V OD 20 -23 11 29 118 51 6 10074184
+6JJJ West Angelas Mine Dep.C 92.5 Retransmission V OD 20 -23 8 42 118 39 26 11152684
+6JJJ West Angelas Mine Dep.D 104.1 Retransmission V OD 20 -23 10 41 118 38 47 11147303
+6JJJ Western Turner Mine 92.1 Retransmission V OD 20 -22 40 0 117 34 52 1960176
+6JJJ Western Turner Mine 2 99.5 Retransmission V OD 15 -22 41 21 117 28 54 1990151
+6JJJ Westonia 99.5 Retransmission V OD 25 -31 18 8 118 41 51 1154859
+6JJJ Wickham 104.9 Retransmission V OD 50 -20 37 58 117 9 10 1153723
+6JJJ Wiluna 102.1 Retransmission M OD 100 -26 35 42 120 13 41 10582249
+6JJJ Wodgina 105.3 Retransmission V OD 30 -21 11 9 118 40 35 1158736
+6JJJ Woodie Woodie Mine 91.9 Retransmission V OD 100 -21 39 11 121 13 22 10582224
+6JJJ Wyndham 98.9 Retransmission M OD 1k -15 27 50 128 6 13 1147362
+6JJJ Yandi BHP Mine Site 1 97.1 Retransmission V OD 50 -22 42 45 119 5 45 1975405
+6JJJ Yandi BHP Mine Site 2 91.5 Retransmission V OD 50 -22 43 51 119 0 58 1975410
+6JJJ Yandi Billiard Sth Mine 101.5 Retransmission V DA 20 -22 48 46 119 16 29 10091928
+6JJJ Yandi Junction SW Mine 90.7 Retransmission V OD 20 -22 47 46 119 9 35 1950954
+6JJJ Yandicoogina 104.1 Retransmission M OD 20 -22 46 12 119 13 54 1158591
+6JJJ Yandicoogina Village 100.9 Retransmission V OD 50 -22 48 4 119 14 50 1183631
+6JJJUE Cloudbreak Mine Bigge Pit 91.9 Retransmission V OD 50 -22 17 57 119 13 27 11281009
+6JJJUE Cloudbreak Mine Central Hub100.3 Retransmission V OD 100 -22 20 5 119 24 10 1991577
+6JJJUE Cloudbreak Mine Kangaroo RBS101.1 Retransmission V OD 100 -22 17 5 119 18 10 1991584
+6JJJUE Eliwana Mine 94.3 Retransmission V OD 100 -22 28 21 116 49 47 11435511
+6KA Karratha 102.5 Commercial M DA 1k -20 44 8 116 51 33 10278541
+6KA Roebourne 95.3 Commercial M DA 500 -20 46 19 117 8 31 10278570
+6KAN Katanning 94.9 Commercial V DA 5k -33 38 58 117 30 2 1154794
+6KAR Kalgoorlie 97.9 Commercial M OD 6k -30 44 8 121 30 4 1152732
+6KAR Kalgoorlie 97.9 Commercial V DA 4k -30 44 8 121 30 4 10164455
+6KAR Kalgoorlie Super Pit 91.9 Retransmission V OD 10 -30 46 52 121 30 46 1190614
+6KAR Kambalda 94.7 Commercial V DA 20 -31 12 40 121 40 24 10164456
+6KAR Kambalda 94.7 Commercial M OD 20 -31 12 36 121 40 23 1191484
+6KCR Kalamunda 102.5 Community V DA 200 -31 58 42 116 3 43 10335184
+6KG Kalgoorlie Super Pit 92.7 Retransmission V OD 10 -30 46 52 121 30 46 1190615
+6KW Argyle 105.9 National M OD 50 -16 42 35 128 23 44 1198511
+6LN Coral Bay 102.1 Retransmission V OD 20 -23 8 29 113 46 26 10655882
+6LN Onslow 98.7 Commercial M OD 100 -21 38 45 115 6 54 10408064
+6MER Beacon 94.1 Retransmission V OD 100 -30 27 41 117 53 35 1157768
+6MER Koorda 102.3 Retransmission V OD 200 -30 49 34 117 29 4 1158940
+6MER Merredin 105.1 Commercial V DA 6k -31 30 12 118 12 21 1152729
+6MER Mukinbudin 90.7 Retransmission V OD 100 -30 54 45 118 12 13 1972404
+6MER Southern Cross 102.3 Commercial V OD 250 -31 14 3 119 19 27 1158939
+6MIX Perth 94.5 Commercial M DA 40k -32 0 46 116 3 42 1384881
+6MIX Perth 94.5 Commercial M DA 40k -32 0 26 116 5 2 1384881
+6MKA Meekatharra 98.3 Community V OD 1k -26 35 31 118 29 49 1155295
+6MKA Wiluna 98.9 Retransmission M OD 100 -26 35 42 120 13 41 10942799
+6MM Mandurah 91.7 Commercial V DA 5k -32 39 1 115 59 23 10426922
+6MMM Perth 92.9 Commercial M DA 40k -32 0 46 116 3 42 1384852
+6MMM Perth 92.9 Commercial M DA 40k -32 0 26 116 5 2 1384852
+6MN Jimblebar Mine 97.3 Retransmission V OD 75 -23 22 46 120 3 9 1991529
+6NAM Northam 96.5 Commercial V OD 10k -31 40 30 116 36 41 1152731
+6NAM Wongan Hills 104.7 Retransmission V OD 30 -30 53 26 116 43 29 1194412
+6NAN Boddington 94.9 Retransmission V OD 50 -32 47 23 116 28 31 1188526
+6NAN Boddington Bauxite Mine 95.3 Retransmission V OD 10 -32 57 57 116 26 59 1957887
+6NAN Kulin 95.1 Retransmission M OD 40 -32 40 19 118 9 15 1184719
+6NAN Narrogin 100.5 Commercial V OD 5k -32 57 38 117 12 58 1150788
+6NEW Jimblebar Mine 89.3 Retransmission V OD 75 -23 22 46 120 3 9 1991524
+6NEW Mt Whaleback Mine 105.7 Retransmission V OD 20 -23 21 53 119 40 57 1973375
+6NME Perth 100.9 Community M DA 16k -32 0 30 116 5 3 1236269
+6NOW Perth 96.1 Commercial M DA 40k -32 0 26 116 5 2 1384882
+6NR Perth 100.1 Community M DA 6500 -32 0 30 116 5 3 1172328
+6NW Broome 102.9 Commercial V DA 2k -17 57 51 122 13 17 1158383
+6NW Port Hedland 94.1 Commercial M DA 5k -20 22 34 118 34 39 10298972
+6PAC Kalgoorlie 96.3 Community M OD 6k -30 43 2 121 26 25 1172103
+6PER Perth 93.7 Commercial M DA 40k -32 0 46 116 3 42 1170706
+6PER Perth 93.7 Commercial M DA 40k -32 0 39 116 5 4 1170706
+6PNN Broome 106.9 National M OD 2k -17 53 19 122 15 48 1566062
+6PNN Carnarvon 106.1 National M OD 280 -24 54 21 113 43 14 1565017
+6PNN Central Agricultural 99.7 National M OD 80k -31 59 4 117 11 23 1192580
+6PNN Esperance 103.1 National M OD 5k -33 52 30 121 53 41 1564998
+6PNN Geraldton 101.3 National M OD 10k -28 40 55 114 40 37 1565006
+6PNN Kalgoorlie 100.3 National M OD 6k -30 43 2 121 26 25 1565001
+6PNN Karratha 104.1 National M OD 100 -20 44 8 116 51 33 1562559
+6PNN Newman Area C Mine 91.1 Retransmission V DA 20 -22 54 21 118 55 21 1974684
+6PNN Port Hedland 94.9 National M OD 2k -20 22 2 118 33 33 1562562
+6PNN Southern Agricultural 92.1 National M OD 80k -34 39 21 117 38 51 1192781
+6PNN Wagin 96.3 National M OD 5k -33 18 51 117 16 43 1192782
+6PRK Halls Creek 98.1 Community V OD 60 -18 13 31 127 40 17 1153617
+6RCI Christmas Island Phosphate Hill 92.5 Retransmission V OD 20 -10 25 58 105 41 2 1972426
+6RED Karratha 106.5 Commercial M DA 1k -20 44 8 116 51 33 1153253
+6RED Roebourne 94.5 Commercial M DA 500 -20 46 19 117 8 31 10265851
+6RTR Perth 92.1 Community M DA 16k -32 0 30 116 5 3 10119216
+6SAT Barrow Island 107.1 Retransmission V OD 20 -20 49 4 115 26 18 1917703
+6SAT Brockman 2 MIne - Pit 8 106.1 Retransmission V OD 200 -22 24 24 117 20 46 1989599
+6SAT Brockman 4 Mine 100.5 Retransmission V OD 150 -22 35 36 117 13 53 1919561
+6SAT Cervantes 101.5 Retransmission V OD 20 -30 30 5 115 4 16 1158916
+6SAT Citic Pacific Mine 99.7 Retransmission V OD 70 -21 4 26 116 9 3 11263696
+6SAT Cloudbreak Mine Bigge Pit 102.3 Retransmission V OD 50 -22 17 57 119 13 27 11281013
+6SAT Cloudbreak Mine Central Hub 97.1 Retransmission V OD 100 -22 20 5 119 24 10 1991585
+6SAT Cloudbreak Mine Kangaroo RBS89.1 Retransmission V OD 100 -22 17 5 119 18 10 1991580
+6SAT Corunna Downs Mine 99.5 Retransmission V OD 50 -21 26 38 119 40 26 10968036
+6SAT Cue 104.5 Commercial M OD 50 -27 25 44 117 54 2 1158230
+6SAT Dalwallinu 104.5 Commercial V OD 250 -30 16 38 116 40 9 1158231
+6SAT Derby (WA) 102.7 Commercial M OD 100 -17 18 47 123 39 20 1154839
+6SAT Eliwana Mine 91.1 Retransmission V OD 100 -22 28 21 116 49 47 11435554
+6SAT Eneabba 103.7 Commercial V OD 30 -29 49 56 115 20 6 1158232
+6SAT Exmouth 99.7 Commercial M DA 50 -21 56 42 114 7 44 1153255
+6SAT Golden Grove Mine (WA) 101.5 Retransmission V OD 25 -28 47 5 116 56 15 1926775
+6SAT Granny Smith Goldmine 91.3 Retransmission V DA 100 -28 48 44 122 24 21 10287312
+6SAT Hope Downs 1 Mine 101.3 Retransmission V OD 150 -22 57 20 119 5 58 1950703
+6SAT Hope Downs 4 Mine 99.1 Retransmission V DA 150 -23 9 17 119 31 59 1942889
+6SAT Hope Downs Village 90.1 Retransmission V DA 150 -23 2 28 119 1 56 1180683
+6SAT Jack Hills Mine 88.5 Retransmission V OD 30 -26 1 17 117 16 7 1184859
+6SAT Jimblebar Mine 92.5 Retransmission V OD 75 -23 22 46 120 3 9 1991526
+6SAT Jundee Mine 104.1 Retransmission V OD 25 -26 23 41 120 38 15 1153842
+6SAT Jurien Bay 104.7 Commercial V OD 150 -30 17 40 115 3 2 1158234
+6SAT Kalbarri 104.5 Commercial M OD 50 -27 42 20 114 10 30 1158235
+6SAT Koodaideri Mine 92.9 Retransmission V OD 20 -22 30 49 119 1 20 1932639
+6SAT Kununurra 102.5 Commercial M OD 100 -15 45 47 128 44 26 1154840
+6SAT Lancelin 103.9 Commercial V OD 150 -30 59 6 115 23 8 1158236
+6SAT Laverton 98.1 Retransmission V OD 20 -28 37 26 122 24 4 1157694
+6SAT Leeman 104.1 Commercial V OD 15 -29 57 6 114 58 36 1158238
+6SAT Leinster 101.3 Commercial M OD 120 -27 54 52 120 42 18 1158239
+6SAT Leonora 100.1 Commercial M OD 100 -28 52 55 121 20 3 1158240
+6SAT Marandoo 101.3 Retransmission V OD 100 -22 38 1 118 6 43 1159280
+6SAT Marandoo Mine Pit 100.5 Retransmission V OD 20 -22 39 35 118 9 55 1960173
+6SAT Marvel Loch 102.9 Retransmission V OD 20 -31 28 10 119 29 27 1158901
+6SAT Meekatharra 101.5 Commercial M OD 50 -26 35 49 118 29 52 1158241
+6SAT Menzies 102.1 Retransmission V OD 30 -29 41 40 121 1 46 1965293
+6SAT Mesa A Mine 104.9 Retransmission V OD 150 -21 39 57 115 54 48 1919785
+6SAT Mesa J Mine 95.7 Retransmission V OD 25 -21 44 41 116 15 10 1931159
+6SAT Moora 106.7 Retransmission V OD 30 -30 38 44 116 0 29 1567353
+6SAT Morawa 104.7 Commercial V OD 100 -29 19 1 115 52 46 10652906
+6SAT Mount Magnet 100.9 Commercial M OD 50 -28 3 23 117 50 33 1158242
+6SAT Nammuldi Mine 97.7 Retransmission V OD 130 -22 24 39 117 24 59 1960719
+6SAT Newman 90.5 Commercial M OD 250 -23 20 57 119 43 30 1154838
+6SAT Newman Area C Mine 104.9 Retransmission V DA 20 -22 54 21 118 55 21 1974690
+6SAT North Star Mine 103.5 Retransmission V OD 150 -21 15 28 119 2 2 11235610
+6SAT Pannawonica 101.3 Commercial M OD 50 -21 38 60 116 19 31 1158243
+6SAT Paraburdoo 94.9 Commercial M DA 50 -23 13 59 117 39 57 10265264
+6SAT Perenjori 101.7 Commercial V OD 600 -29 34 50 116 32 28 1158244
+6SAT Rosslyn Hill Mine 95.1 Retransmission V OD 30 -26 31 27 119 57 4 1970164
+6SAT Silvergrass Mine 90.3 Retransmission V DA 50 -22 19 20 117 18 25 10100224
+6SAT Solomon Mining Area 1 104.3 Retransmission V OD 50 -22 8 56 117 50 59 1991588
+6SAT Solomon Mining Area 2 97.9 Retransmission V OD 50 -22 7 30 117 55 15 1991592
+6SAT Telfer 104.5 Retransmission V OD 160 -21 43 17 122 13 22 1928028
+6SAT Telfer Mine West Dome 90.1 Retransmission V OD 50 -21 42 57 122 10 45 1961644
+6SAT Tom Price 96.1 Commercial M DA 75 -22 41 57 117 47 32 10265117
+6SAT Tropicana Gold Mine 104.5 Retransmission V OD 90 -29 14 31 124 33 6 1976819
+6SAT Warburton (WA) 100.5 Commercial M OD 30 -26 8 3 126 34 48 1158246
+6SAT West Angelas 100.5 Retransmission V OD 250 -23 9 16 118 46 48 1567127
+6SAT West Angelas Mine Dep. B 91.5 Retransmission V OD 65 -23 6 49 118 46 55 1977619
+6SAT West Angelas Mine Dep. E 101.3 Retransmission V OD 20 -23 11 38 118 47 1 1947140
+6SAT West Angelas Mine Dep. F 93.5 Retransmission V OD 20 -23 11 29 118 51 6 10074180
+6SAT West Angelas Mine Dep.C 90.9 Retransmission V OD 20 -23 8 42 118 39 26 11152676
+6SAT West Angelas Mine Dep.D 102.5 Retransmission V OD 20 -23 10 41 118 38 47 11147299
+6SAT Western Turner Mine 90.5 Retransmission V OD 20 -22 40 0 117 34 52 1960175
+6SAT Yandi BHP Mine Site 1 97.9 Retransmission V OD 50 -22 42 45 119 5 45 1975406
+6SAT Yandi BHP Mine Site 2 93.1 Retransmission V OD 50 -22 43 51 119 0 58 1975413
+6SAT Yandi Billiard Sth Mine 104.7 Retransmission V DA 20 -22 48 46 119 16 29 10091927
+6SAT Yandi Junction SW Mine 93.9 Retransmission V OD 20 -22 47 46 119 9 35 1950957
+6SBSCH Newman Area C Mine 103.3 Retransmission V DA 20 -22 54 21 118 55 21 1974686
+6SBSFM Bridgetown 97.3 Retransmission V OD 40 -33 56 13 116 9 27 1940911
+6SBSFM Broome 91.7 Retransmission V OD 100 -17 58 8 122 13 6 1188102
+6SBSFM Coolgardie 92.3 Retransmission V OD 150 -30 56 21 121 9 56 1984787
+6SBSFM Coorow 107.1 Retransmission V OD 100 -29 52 53 116 1 29 1942093
+6SBSFM Denham 100.5 Retransmission V OD 100 -25 55 10 113 32 3 1985757
+6SBSFM Exmouth 98.9 Retransmission V OD 100 -21 56 42 114 7 44 1567350
+6SBSFM Green Head 100.1 Retransmission V OD 100 -30 4 26 114 58 6 1942094
+6SBSFM Hopetoun (WA) 95.7 Retransmission M OD 300 -33 55 59 120 8 1 1955600
+6SBSFM Laverton 94.9 Retransmission V OD 150 -28 37 42 122 23 58 1985145
+6SBSFM Leonora 95.3 Retransmission V OD 150 -28 52 55 121 20 3 1984785
+6SBSFM Menzies 98.1 Retransmission V OD 150 -29 41 40 121 1 46 1989730
+6SBSFM Moora 103.5 Retransmission V OD 30 -30 38 44 116 0 29 1567355
+6SBSFM Morawa 93.5 Retransmission M OD 600 -29 19 7 115 52 56 1922539
+6SBSFM Perth 96.9 National M OD 100k -32 0 39 116 5 4 1198371
+6SBSFM Ravensthorpe 94.7 Retransmission M OD 300 -33 34 52 120 2 48 1955602
+6SBSFM Westonia 101.9 Retransmission V OD 30 -31 18 8 118 41 51 1564476
+6SBSFM Wongan Hills 106.3 Retransmission V OD 30 -30 53 26 116 43 29 1194413
+6SEA Esperance 102.3 Commercial V DA 2500 -33 52 31 121 53 40 10164465
+6SEA Esperance 102.3 Commercial M OD 5k -33 52 30 121 53 41 1152730
+6SEA Hopetoun (WA) 103.7 Retransmission M OD 25 -33 55 59 120 8 1 1155503
+6SEA Ravensthorpe 89.1 Retransmission V OD 250 -33 34 52 120 2 48 1937000
+6SEN Perth 101.7 Community V DA 8k -32 1 50 115 49 42 1926086
+6SON Katanning 97.3 Retransmission V OD 10 -33 40 52 117 34 5 1964503
+6SON Perth 98.5 Community M DA 16k -32 0 30 116 5 3 1385210
+6TCR Wanneroo 89.7 Community V DA 2k -31 45 22 115 48 58 1170704
+6TZ Augusta 101.5 Commercial V DA 80 -34 19 39 115 9 44 10165271
+6TZ/T Augusta 101.5 Commercial V OD 80 -34 19 26 115 9 35 1936948
+6WF Cloudbreak Mine Bigge Pit 97.5 Retransmission V OD 50 -22 17 57 119 13 27 11281011
+6WF Cloudbreak Mine Central Hub 95.5 Retransmission V OD 100 -22 20 5 119 24 10 1991581
+6WF Cloudbreak Mine Kangaroo RBS98.7 Retransmission V OD 100 -22 17 5 119 18 10 1991578
+6WF Newman Area C Mine 98.3 Retransmission V DA 20 -22 54 21 118 55 21 1974682
+6WF Woodie Woodie Mine 90.3 Retransmission V OD 100 -21 39 11 121 13 22 10582397
+6WR Argyle 104.3 Community M OD 50 -16 42 35 128 23 44 1154066
+6WR Warmun 102.1 Community V OD 400 -17 1 58 128 12 53 1385233
+6WR Wyndham 102.1 Community V OD 1k -15 27 50 128 6 13 1385232
+6WSM Fremantle 91.3 Community V OD 200 -32 1 60 115 46 14 1171457
+6YCR York 101.3 Community M OD 100 -31 51 4 116 45 41 1171924
+8JJJ Karlawinda Gold Mine 105.3 Retransmission V OD 10 -23 45 43 120 5 48 11188095
