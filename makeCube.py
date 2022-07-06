@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from tqdm import tqdm
 from astropy.io import fits
 import numpy as np
 from argparse import ArgumentParser
@@ -115,7 +114,7 @@ def main(args):
         rotation_array.append(slope)
     print("done")
     
-    for f in tqdm(range(args.channels)):
+    for f in range(args.channels):
         global_data = []
         w = []
         for t, slope in zip(timeSteps,rotation_array):

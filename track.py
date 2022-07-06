@@ -9,7 +9,6 @@ import spacetracktool as st
 from spacetracktool import operations as ops
 from skyfield.api import EarthSatellite
 from skyfield.api import Topos, load
-from tqdm import tqdm
 from os import path
 import json
 from subprocess import call
@@ -166,7 +165,7 @@ if __name__ == "__main__":
     parser.add_argument("--obs",required=True, type=int,help="the obs id")
     parser.add_argument("--metafits",required=True, help="the observation metafits file")
     parser.add_argument("--noradid",required=True, help="the noradid of the satellite")
-    parser.add_argument("--integration",default=2,type=int,help="the image integration time")
+    parser.add_argument("--integration",default=2,type=float,help="the image integration time")
     parser.add_argument("--searchRadius",default=18,type=float,help="the distance from pointing centre to search for satellite")
     parser.add_argument("--user",required=True, help="the user name for spacetrack.org")
     parser.add_argument("--passwd",required=True, help="the password for spacetrack.org")
