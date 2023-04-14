@@ -9,11 +9,19 @@ import spacetracktool as st
 from spacetracktool import operations as ops
 from skyfield.api import EarthSatellite
 from skyfield.api import Topos, load
+from datetime import datetime
+from casacore.tables import table
 from os import path
 import json
 from subprocess import call
+from astropy.time import Time
 import csv
 
+
+def msTime2UTC(time):
+    time_local = time/(24*3600)
+    tmp = Time(time_local, format='mjd')
+    return tmp.datetime
 
 def obtainTLE(noradid,refUTC, obs):
     time1 = refUTC + timedelta(hours=-24*3)
@@ -68,11 +76,14 @@ def main(args):
     #quack = float(hdu[0].header["QUACKTIM"])
     quack = 3 ## to overcome the hardcoded behaviour of cotter
 
-    try:
-        start_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S.%f')
-    except:
-        start_utc = datetime.strptime(hdu[0].header["DATE-OBS"], '%Y-%m-%dT%H:%M:%S')
-    start_utc =  start_utc + timedelta(seconds=quack) ## update start time for quack time
+    ## read ms and get time
+    ms = table(str(args.obs) + ".ms")
+    mstime = ms.getcol('TIME')
+    ms.close()
+
+    converted_time = sorted(set(msTime2UTC(mstime)))
+
+    start_utc =  converted_time[0] + timedelta(seconds=quack) ## update start time for quack time
     pointing_ra = float(hdu[0].header["RA"])
     pointing_dec = float(hdu[0].header["DEC"])
 
@@ -89,13 +100,15 @@ def main(args):
     search_timeSteps, search_ra, search_dec = [], [], [] ## contains the timesteps with satellite signal
     baseline_cutoff = []
     time_array = []
-    for timeStep in range(int(duration/args.integration)):
+    for timeStep in range(len(converted_time)):
+
+        local_utc = converted_time[timeStep]
 
         ### skip the first 2 timeSteps and the last timeStep
-        if timeStep in [0, 1, int(duration/args.integration)-1]:
+        if timeStep == len(converted_time)-1 or local_utc < start_utc:
+            if debug:
+                print("skipping timestep {} as it is quack time.".format(timeStep))
             continue
-   
-        local_utc = start_utc + timedelta(seconds=timeStep*args.integration)
 
         local_ts = ts.utc(local_utc.year, local_utc.month, local_utc.day, local_utc.hour, local_utc.minute, local_utc.second + local_utc.microsecond/1000000.0)
 
@@ -106,7 +119,7 @@ def main(args):
         ra_deg, dec_deg = np.degrees(ra.radians), np.degrees(dec.radians)
         dist = np.sqrt((ra_deg- pointing_ra)**2 + (dec_deg - pointing_dec)**2)
         cutOff = getCutOff(distance.m)
-        print("ra {} dec {} timeStep {} dist {} los dist {} cutoff {}".format(ra, dec, timeStep, dist, distance.m, cutOff))
+        #print("ra {} dec {} timeStep {} dist {} los dist {} cutoff {}".format(ra, dec, timeStep, dist, distance.m, cutOff))
 
         if dist < args.searchRadius:
             ## update ra and dec in chgcentre format
